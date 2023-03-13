@@ -42,7 +42,7 @@ public class dlgRetiro extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Alumno:");
-		lblNewLabel.setBounds(10, 11, 46, 14);
+		lblNewLabel.setBounds(10, 11, 79, 14);
 		contentPanel.add(lblNewLabel);
 		
 		table = new JTable();
@@ -50,20 +50,20 @@ public class dlgRetiro extends JDialog {
 		contentPanel.add(table);
 		
 		JButton btnNewButton = new JButton("Adicionar");
-		btnNewButton.setBounds(564, 7, 89, 23);
+		btnNewButton.setBounds(524, 7, 129, 23);
 		contentPanel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Modificar");
-		btnNewButton_1.setBounds(564, 41, 89, 23);
+		btnNewButton_1.setBounds(524, 41, 129, 23);
 		contentPanel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Eliminar");
-		btnNewButton_2.setBounds(564, 75, 89, 23);
+		btnNewButton_2.setBounds(524, 75, 129, 23);
 		contentPanel.add(btnNewButton_2);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Pepe", "Juan", "Marco", "Liliana", "Margaret", "Lupe"}));
-		comboBox.setBounds(66, 7, 89, 22);
+		comboBox.setBounds(92, 7, 129, 22);
 		contentPanel.add(comboBox);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("Curso");
@@ -72,7 +72,7 @@ public class dlgRetiro extends JDialog {
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Anatomia", "Redes", "Quimica", "Matematica", "Fisica", "Historia"}));
-		comboBox_1.setBounds(66, 41, 89, 22);
+		comboBox_1.setBounds(92, 41, 129, 22);
 		contentPanel.add(comboBox_1);
 	}
 }

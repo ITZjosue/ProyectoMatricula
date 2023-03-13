@@ -200,13 +200,13 @@ public class DlgAlumno extends JDialog {
 					mensaje("Necesita escoger un alumno");
 				}else {
 					int opt = confirmDlg("Seguro que desea eliminar al alumno?");
-					if( Integer.parseInt(table.getValueAt(row,4).toString()) == 0 && opt == 0) {
+					if( table.getValueAt(row,4).toString() == "REGISTRADO" && opt == 0) {
 						ListaAlumnos.deleteAlumnoByCode(Integer.parseInt(table.getValueAt(row,0).toString()));
 						listarAlumnos();
-					}else if(Integer.parseInt(table.getValueAt(row,4).toString()) == 1){
+					}else if(table.getValueAt(row,4) == "MATRICULADO"){
 						mensaje("El alumno no puede ser eliminado porque está matriculado");
 					}
-					else if(Integer.parseInt(table.getValueAt(row, 4).toString()) == 2) {
+					else if(table.getValueAt(row, 4) == "RETIRADO") {
 						mensaje("El alumno no puede ser eliminado porque está retirado");
 					}										
 				}

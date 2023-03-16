@@ -7,7 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import arreglos.ListaAlumnos;
+import arreglos.ListaCursos;
 import entidades.Alumno;
+import entidades.Curso;
 
 import java.awt.Color;
 import java.awt.Dialog.ModalityType;
@@ -136,5 +139,40 @@ public class MainMenu extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_2_6 = new JMenuItem("Alumnos matriculados por curso");
 		mnReporte.add(mntmNewMenuItem_2_6);
+		if(ListaAlumnos.getListaAlumnosLen() < 1) {
+			addAlumnos();
+		}
+		if(ListaCursos.getCantidadCursos() < 1) {
+			addCursos();
+		}
+	}
+	
+	void addAlumnos() {
+		Alumno a = new Alumno("Dante Martin","Perez","7678872",15,990867622);
+		Alumno b = new Alumno("Mario Cesar","Casas","1234567",14,990867622);
+		Alumno c = new Alumno("Pedro Ramon","Suarez","9807654",12,990867622);
+		Alumno d = new Alumno("Daniel Alejandro","Pereda","1845987",20,990867622,1);
+		Alumno e = new Alumno("Michelle Melissa","Santos","3329487",19,990867622,2);
+		ListaAlumnos.setListaAlumnos(a);
+		ListaAlumnos.setListaAlumnos(b);
+		ListaAlumnos.setListaAlumnos(c);
+		ListaAlumnos.setListaAlumnos(d);
+		ListaAlumnos.setListaAlumnos(e);	
+	}
+	void addCursos() {
+		Curso a = new Curso(12345,2,2,6,"Fisica II");
+		Curso b = new Curso(12545,2,3,3,"Ecuaciones Diferenciales");
+		Curso c = new Curso(16645,3,5,9,"Calculo I");
+		Curso d = new Curso(12785,1,2,4,"Quimica Organica");
+		Curso e = new Curso(19245,4,3,2,"Fisico-Quimica");
+		Curso f = new Curso(12335,2,4,3,"Bases de datos");
+		Curso g = new Curso(10975,1,5,4,"Geometria");
+		ListaCursos.addCurso(a);
+		ListaCursos.addCurso(b);
+		ListaCursos.addCurso(c);
+		ListaCursos.addCurso(d);
+		ListaCursos.addCurso(e);
+		ListaCursos.addCurso(f);
+		ListaCursos.addCurso(g);	
 	}
 }

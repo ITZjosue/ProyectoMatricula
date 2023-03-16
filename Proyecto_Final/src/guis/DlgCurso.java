@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
-// HOLIS DESDE GITHUB
+
 public class DlgCurso extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -132,9 +132,6 @@ public class DlgCurso extends JDialog {
 		model.addColumn("Ciclo");
 		model.addColumn("N° Creditos");
 		model.addColumn("Horas");
-		if(ListaCursos.getCantidadCursos() < 1) {
-			addExamples();
-		}
 		listarCursos();
 		
 		JButton btnAceptar = new JButton("Aceptar");
@@ -258,20 +255,4 @@ public class DlgCurso extends JDialog {
 		return JOptionPane.showConfirmDialog(this, s);
 	}
 	
-	void addExamples() {
-		Curso a = new Curso(12345,2,2,6,"Fisica II");
-		Curso b = new Curso(12545,2,3,3,"Ecuaciones Diferenciales");
-		Curso c = new Curso(16645,3,5,9,"Calculo I");
-		Curso d = new Curso(12785,1,2,4,"Quimica Organica");
-		Curso e = new Curso(19245,4,3,2,"Fisico-Quimica");
-		Curso f = new Curso(12335,2,4,3,"Bases de datos");
-		Curso g = new Curso(10975,1,5,4,"Geometria");
-		ListaCursos.addCurso(a);
-		ListaCursos.addCurso(b);
-		ListaCursos.addCurso(c);
-		ListaCursos.addCurso(d);
-		ListaCursos.addCurso(e);
-		ListaCursos.addCurso(f);
-		ListaCursos.addCurso(g);	
-	}
 }

@@ -169,9 +169,7 @@ public class DlgAlumno extends JDialog {
 		model.addColumn("Nombres");
 		model.addColumn("Apellidos");
 		model.addColumn("Estado");
-		if(ListaAlumnos.getListaAlumnosLen() < 1) {
-			addExamples();
-		}
+		
 		listarAlumnos();
 		
 		btnAdicionar.addActionListener(new ActionListener() {
@@ -300,17 +298,5 @@ public class DlgAlumno extends JDialog {
 	
 	int confirmDlg(String s) {
 		return JOptionPane.showConfirmDialog(this, s);
-	}
-	void addExamples() {
-		Alumno a = new Alumno("Dante Martin","Perez","7678872",15,990867622);
-		Alumno b = new Alumno("Mario Cesar","Casas","1234567",14,990867622);
-		Alumno c = new Alumno("Pedro Ramon","Suarez","9807654",12,990867622);
-		Alumno d = new Alumno("Daniel Alejandro","Pereda","1845987",20,990867622,1);
-		Alumno e = new Alumno("Michelle Melissa","Santos","3329487",19,990867622,2);
-		ListaAlumnos.setListaAlumnos(a);
-		ListaAlumnos.setListaAlumnos(b);
-		ListaAlumnos.setListaAlumnos(c);
-		ListaAlumnos.setListaAlumnos(d);
-		ListaAlumnos.setListaAlumnos(e);	
 	}
 }

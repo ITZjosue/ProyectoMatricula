@@ -38,4 +38,23 @@ public class ListaAlumnos {
 			}
 		}
 	}
+	
+	public static ArrayList<Alumno> getAlumnosRegistrados() {
+		ArrayList<Alumno> registrados = new ArrayList<>();
+		for(int i= 0;i<ListaAlumnos.listaAlumnos.size();i++) {
+			if(ListaAlumnos.listaAlumnos.get(i).getEstado() == 0)
+				registrados.add(ListaAlumnos.listaAlumnos.get(i));
+		}
+		return registrados;
+	}
+	
+	public static ArrayList<Alumno> getAlumnosVigentes(){
+		ArrayList<Alumno> vigentes = new ArrayList<>();
+		for(int i = 0;i<ListaAlumnos.listaAlumnos.size();i++) {
+			if(ListaAlumnos.listaAlumnos.get(i).getEstado() == 1) {
+				vigentes.add(ListaAlumnos.listaAlumnos.get(i));
+			}
+		}
+		return vigentes;
+	}
 }

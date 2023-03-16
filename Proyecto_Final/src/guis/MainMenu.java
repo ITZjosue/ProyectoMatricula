@@ -113,9 +113,25 @@ public class MainMenu extends JFrame {
 		menuBar.add(mnReporte);
 		
 		JMenuItem mntmNewMenuItem_2_4 = new JMenuItem("Alumnos con matricula pendiente");
+		mntmNewMenuItem_2_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DlgReporteAlumnosMatriculaPendiente dlgReporteAlumnosMatriculaPendiente = new DlgReporteAlumnosMatriculaPendiente();
+				dlgReporteAlumnosMatriculaPendiente.setModalityType(ModalityType.APPLICATION_MODAL);
+				dlgReporteAlumnosMatriculaPendiente.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dlgReporteAlumnosMatriculaPendiente.setVisible(true);
+			}
+		});
 		mnReporte.add(mntmNewMenuItem_2_4);
 		
 		JMenuItem mntmNewMenuItem_2_5 = new JMenuItem("Alumnos con matricula vigente");
+		mntmNewMenuItem_2_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DlgReporteAlumnosMatriculaVigente dlgReporteAlumnosMatriculaVigente = new DlgReporteAlumnosMatriculaVigente();
+				dlgReporteAlumnosMatriculaVigente.setModalityType(ModalityType.APPLICATION_MODAL);
+				dlgReporteAlumnosMatriculaVigente.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dlgReporteAlumnosMatriculaVigente.setVisible(true);
+			}
+		});
 		mnReporte.add(mntmNewMenuItem_2_5);
 		
 		JMenuItem mntmNewMenuItem_2_6 = new JMenuItem("Alumnos matriculados por curso");

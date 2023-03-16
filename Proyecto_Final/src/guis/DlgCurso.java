@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
-
+// HOLIS DESDE GITHUB
 public class DlgCurso extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();

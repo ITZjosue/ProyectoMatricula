@@ -75,12 +75,23 @@ public class DlgMatricula extends JDialog {
 		setBounds(100, 100, 888, 678);
 		getContentPane().setLayout(null);
 		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(0, 0, 873, 639);
+		getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(28, 50, 819, 203);
+		panel_1.add(panel_2);
 		panel_2.setForeground(Color.BLACK);
 		panel_2.setBackground(new Color(202, 211, 217));
 		panel_2.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "Datos Personales", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_2.setBounds(26, 39, 819, 203);
-		getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -121,6 +132,7 @@ public class DlgMatricula extends JDialog {
 		panel.add(lblNombre_4_1);
 		
 		txtNumMatricula = new JTextField();
+		txtNumMatricula.setEditable(false);
 		txtNumMatricula.setBounds(162, 35, 211, 20);
 		panel.add(txtNumMatricula);
 		txtNumMatricula.setColumns(10);
@@ -151,17 +163,6 @@ public class DlgMatricula extends JDialog {
 		cboEstado.setSelectedIndex(1);
 		cboEstado.setBounds(541, 111, 129, 22);
 		panel.add(cboEstado);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 873, 639);
-		getContentPane().add(panel_1);
-		panel_1.setLayout(null);
-		
-		JButton btnNuevo = new JButton("Nuevo");
-		btnNuevo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnNuevo.setBorder(UIManager.getBorder("Button.border"));
 		btnNuevo.setBounds(28, 596, 89, 32);
 		panel_1.add(btnNuevo);
@@ -197,6 +198,10 @@ public class DlgMatricula extends JDialog {
 		panel_1.add(btnConsultar);
 		
 		JButton btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnModificar.setBounds(471, 596, 89, 32);
 		panel_1.add(btnModificar);
 		

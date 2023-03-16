@@ -28,7 +28,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.EtchedBorder;
-import javax.swing.border.LineBorder;
+import javax.swing.border.LineBorder;//ss
 import javax.swing.border.MatteBorder;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;

@@ -24,6 +24,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
+import java.awt.Font;
+import javax.swing.UIManager;
+import javax.swing.SwingConstants;
 
 public class DlgAlumno extends JDialog {
 

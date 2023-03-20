@@ -1,5 +1,5 @@
 package guis;
-import arreglos.ListaAlumnos;
+import arreglos.ArregloAlumno;
 import entidades.Alumno;
 
 import java.awt.BorderLayout;
@@ -65,7 +65,7 @@ public class DlgReporteAlumnosMatriculaPendiente extends JDialog {
 	}
 	
 	public void listarAlumnosRegistrados() {
-		ArrayList<Alumno> registrados = ListaAlumnos.getAlumnosRegistrados();
+		ArrayList<Alumno> registrados = ArregloAlumno.getAlumnosRegistrados();
 		for(int i = 0;i<registrados.size();i++) {
 			Alumno a = registrados.get(i);
 			model.addRow(new Object[] {

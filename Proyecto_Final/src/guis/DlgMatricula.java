@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-import arreglos.ListaAlumnos;
+import arreglos.ArregloAlumno;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;

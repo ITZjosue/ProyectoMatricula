@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-import arreglos.ListaAlumnos;
-import arreglos.ListaCursos;
+import arreglos.ArregloAlumno;
+import arreglos.ArregloCurso;
 import entidades.Alumno;
 import entidades.Curso;
 
@@ -152,7 +152,7 @@ public class DlgCurso extends JDialog {
 							Integer.parseInt(txtCantHoras.getText()),
 							txtAsignatura.getText()
 							);
-					ListaCursos.addCurso(curso);
+					ArregloCurso.addCurso(curso);
 					listarCursos();
 					limpiarFormulario();
 				}else {
@@ -169,7 +169,7 @@ public class DlgCurso extends JDialog {
 					mensaje("Necesita esoger un curso");
 				}else {
 					if(opt == 0) {
-						ListaCursos.deleteCursoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
+						ArregloCurso.deleteCursoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
 						listarCursos();										
 					}					
 				}
@@ -187,7 +187,7 @@ public class DlgCurso extends JDialog {
 					btnAceptar.setEnabled(true);
 					btnCancelar.setEnabled(true);
 					txtCodigo.setEditable(false);
-					modCurso = ListaCursos.getCursoByCode(Integer.parseInt(table.getValueAt(row,0).toString()));
+					modCurso = ArregloCurso.getCursoByCode(Integer.parseInt(table.getValueAt(row,0).toString()));
 					txtCodigo.setText(String.valueOf(modCurso.getCodCurso()));
 					txtCiclo.setText(String.valueOf(modCurso.getCiclo()));
 					txtCreditos.setText(String.valueOf(modCurso.getCreditos()));
@@ -230,13 +230,13 @@ public class DlgCurso extends JDialog {
 		for(int i = 0;i<rowsNumber;i++) {
 			model.removeRow(0);
 		}
-		for (int i = 0; i < ListaCursos.getCantidadCursos(); i++) {
+		for (int i = 0; i < ArregloCurso.getCantidadCursos(); i++) {
 			model.addRow(new Object[] { 
-					ListaCursos.getCurso(i).getCodCurso(),
-					ListaCursos.getCurso(i).getAsignatura(),
-					ListaCursos.getCurso(i).getCiclo(),
-					ListaCursos.getCurso(i).getCreditos(),
-					ListaCursos.getCurso(i).getHoras()
+					ArregloCurso.getCurso(i).getCodCurso(),
+					ArregloCurso.getCurso(i).getAsignatura(),
+					ArregloCurso.getCurso(i).getCiclo(),
+					ArregloCurso.getCurso(i).getCreditos(),
+					ArregloCurso.getCurso(i).getHoras()
 					});
 		}
 	}

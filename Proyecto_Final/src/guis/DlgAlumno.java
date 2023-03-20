@@ -1,5 +1,6 @@
 package guis;
 
+import arreglos.ArregloAlumno;
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
@@ -12,13 +13,13 @@ import javax.swing.JOptionPane;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-import arreglos.ListaAlumnos;
 import entidades.Alumno;
 
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
@@ -175,6 +176,15 @@ public class DlgAlumno extends JDialog {
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!nomAlumno.getText().isEmpty() && !apeAlumno.getText().isEmpty() && !dniAlumno.getText().isEmpty() && !edadAlumno.getText().isEmpty() && !celAlumno.getText().isEmpty()) {
+					// VERIFICANDO QUE NO SE REPITA DNI
+					for(int i = 0;i<ArregloAlumno.getListaAlumnosLen();i++) {
+						if(ArregloAlumno.getAlumno(i).getDni().equals(dniAlumno.getText())) {
+							mensaje("Este dni ya está registrado");
+							return;
+						}
+					}
+					// VALIDACIONES
+					
 					Alumno nuevoAlumno = new Alumno(
 							nomAlumno.getText(), 
 							apeAlumno.getText(), 
@@ -182,7 +192,7 @@ public class DlgAlumno extends JDialog {
 							Integer.parseInt(edadAlumno.getText()),
 							Integer.parseInt(celAlumno.getText())
 							);
-					ListaAlumnos.setListaAlumnos(nuevoAlumno);
+					ArregloAlumno.setListaAlumnos(nuevoAlumno);
 					listarAlumnos();
 					limpiarFormulario();
 				}else {
@@ -199,7 +209,7 @@ public class DlgAlumno extends JDialog {
 				}else {
 					int opt = confirmDlg("Seguro que desea eliminar al alumno?");
 					if( table.getValueAt(row,4).toString() == "REGISTRADO" && opt == 0) {
-						ListaAlumnos.deleteAlumnoByCode(Integer.parseInt(table.getValueAt(row,0).toString()));
+						ArregloAlumno.deleteAlumnoByCode(Integer.parseInt(table.getValueAt(row,0).toString()));
 						listarAlumnos();
 					}else if(table.getValueAt(row,4) == "MATRICULADO"){
 						mensaje("El alumno no puede ser eliminado porque está matriculado");
@@ -222,7 +232,7 @@ public class DlgAlumno extends JDialog {
 					btnAceptar.setEnabled(true);
 					btnCancelar.setEnabled(true);
 					dniAlumno.setEditable(false);
-					modAlumno = ListaAlumnos.getAlumnoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
+					modAlumno = ArregloAlumno.getAlumnoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
 					nomAlumno.setText(modAlumno.getNombres());
 					apeAlumno.setText(modAlumno.getApellidos());
 					dniAlumno.setText(modAlumno.getDni());
@@ -271,8 +281,8 @@ public class DlgAlumno extends JDialog {
 		for(int i = 0;i<rowsNumber;i++) {
 			model.removeRow(0);
 		}
-		for (int i = 0; i < ListaAlumnos.getListaAlumnosLen(); i++) {
-			Alumno aa = ListaAlumnos.getAlumno(i);
+		for (int i = 0; i < ArregloAlumno.getListaAlumnosLen(); i++) {
+			Alumno aa = ArregloAlumno.getAlumno(i);
 			model.addRow(new Object[] { 
 					aa.getCodAlumno(),
 					aa.getDni(), 

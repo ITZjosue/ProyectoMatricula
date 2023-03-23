@@ -50,7 +50,7 @@ public class Matricula {
 	}
 
 	public String getHora() {
-		return hora;
+		return hora;//ssss
 	}
 
 	public void setHora(String hora) {

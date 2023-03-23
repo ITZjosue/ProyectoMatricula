@@ -1,6 +1,6 @@
 package entidades;
 public class Alumno {
-	private int codAlumno, edad,celular,estado;
+	private int codAlumno, edad,celular,estado, codCurso;
 	private String nombres,apellidos,dni;
 	
 	private static int cantAlumnos;
@@ -28,6 +28,24 @@ public class Alumno {
 		this.celular = celular;
 		cantAlumnos++;
 		this.codAlumno = cantAlumnos;
+	}
+	public Alumno(String nombres, String apellidos,String dni, int edad, int celular,int estado,int codCurso) {
+		this.nombres = nombres;
+		this.apellidos = apellidos;
+		this.dni = dni;
+		this.edad = edad;
+		this.estado = estado;
+		this.celular = celular;
+		cantAlumnos++;
+		this.codAlumno = cantAlumnos;
+		this.codCurso = codCurso;
+	}
+	
+	public int getCodCurso() {
+		return this.codCurso;
+	}
+	public void setCodCurso(int codCurso) {
+		this.codCurso = codCurso;
 	}
 	public int getCodAlumno() {
 		return codAlumno;

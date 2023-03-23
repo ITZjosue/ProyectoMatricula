@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import arreglos.ListaAlumnos;
-import arreglos.ListaCursos;
+import arreglos.ArregloAlumno;
+import arreglos.ArregloCurso;
 import entidades.Alumno;
 import entidades.Curso;
 
@@ -249,6 +249,7 @@ public class MainMenu extends JFrame {
 		mntmNewMenuItem_2_6.setBackground(new Color(0, 128, 255));
 		mntmNewMenuItem_2_6.setBorder(null);
 		mnReporte.add(mntmNewMenuItem_2_6);
+
 		
 		JTextPane txtpnSistemaDeMatrculas = new JTextPane();
 		txtpnSistemaDeMatrculas.setBounds(102, 0, 734, 34);
@@ -274,10 +275,10 @@ public class MainMenu extends JFrame {
 		iconSystem.setIcon(new ImageIcon("C:\\Users\\the_m\\Desktop\\icons\\folder_system_15426 (1).png"));
 		iconSystem.setBounds(0, 0, 102, 71);
 		contentPane.add(iconSystem);
-		if(ListaAlumnos.getListaAlumnosLen() < 1) {
+		if(ArregloAlumno.getListaAlumnosLen() < 1) {
 			addAlumnos();
 		}
-		if(ListaCursos.getCantidadCursos() < 1) {
+		if(ArregloCurso.getCantidadCursos() < 1) {
 			addCursos();
 		}
 	}
@@ -288,11 +289,11 @@ public class MainMenu extends JFrame {
 		Alumno c = new Alumno("Pedro Ramon","Suarez","9807654",12,990867622);
 		Alumno d = new Alumno("Daniel Alejandro","Pereda","1845987",20,990867622,1);
 		Alumno e = new Alumno("Michelle Melissa","Santos","3329487",19,990867622,2);
-		ListaAlumnos.setListaAlumnos(a);
-		ListaAlumnos.setListaAlumnos(b);
-		ListaAlumnos.setListaAlumnos(c);
-		ListaAlumnos.setListaAlumnos(d);
-		ListaAlumnos.setListaAlumnos(e);	
+		ArregloAlumno.setListaAlumnos(a);
+		ArregloAlumno.setListaAlumnos(b);
+		ArregloAlumno.setListaAlumnos(c);
+		ArregloAlumno.setListaAlumnos(d);
+		ArregloAlumno.setListaAlumnos(e);	
 	}
 	void addCursos() {
 		Curso a = new Curso(12345,2,2,6,"Fisica II");
@@ -302,12 +303,12 @@ public class MainMenu extends JFrame {
 		Curso e = new Curso(19245,4,3,2,"Fisico-Quimica");
 		Curso f = new Curso(12335,2,4,3,"Bases de datos");
 		Curso g = new Curso(10975,1,5,4,"Geometria");
-		ListaCursos.addCurso(a);
-		ListaCursos.addCurso(b);
-		ListaCursos.addCurso(c);
-		ListaCursos.addCurso(d);
-		ListaCursos.addCurso(e);
-		ListaCursos.addCurso(f);
-		ListaCursos.addCurso(g);	
+		ArregloCurso.addCurso(a);
+		ArregloCurso.addCurso(b);
+		ArregloCurso.addCurso(c);
+		ArregloCurso.addCurso(d);
+		ArregloCurso.addCurso(e);
+		ArregloCurso.addCurso(f);
+		ArregloCurso.addCurso(g);	
 	}
 }

@@ -12,7 +12,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import arreglos.ListaAlumnos;
+import arreglos.ArregloAlumno;
 import entidades.Alumno;
 
 public class DlgReporteAlumnosMatriculaVigente extends JDialog {
@@ -66,7 +66,7 @@ public class DlgReporteAlumnosMatriculaVigente extends JDialog {
 	}
 
 	public void listarAlumnosVigentes() {
-		ArrayList<Alumno> vigentes = ListaAlumnos.getAlumnosVigentes();
+		ArrayList<Alumno> vigentes = ArregloAlumno.getAlumnosVigentes();
 		for(int i = 0;i<vigentes.size();i++) {
 			Alumno a = vigentes.get(i);
 			model.addRow(new Object[] {

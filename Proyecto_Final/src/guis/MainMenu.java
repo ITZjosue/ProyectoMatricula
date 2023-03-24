@@ -163,7 +163,16 @@ public class MainMenu extends JFrame {
 		mntmNewMenuItem_2_1.setOpaque(true);
 		mntmNewMenuItem_2_1.setBackground(new Color(0, 128, 255));
 		mntmNewMenuItem_2_1.setBorder(null);
+		mntmNewMenuItem_2_1.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			DlgRetiro dlgRetiro = new DlgRetiro();
+			dlgRetiro.setModalityType(ModalityType.APPLICATION_MODAL);
+			dlgRetiro.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dlgRetiro.setVisible(true);
+		}
+	});
 		mnRegistro.add(mntmNewMenuItem_2_1);
+		
 		
 		JMenu mnConsulta = new JMenu("Consulta");
 		mnConsulta.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);

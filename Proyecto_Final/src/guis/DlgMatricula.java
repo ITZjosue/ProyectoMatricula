@@ -80,11 +80,7 @@ public class DlgMatricula extends JDialog {
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton btnNuevo = new JButton("Nuevo");
-		btnNuevo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(28, 50, 819, 203);
@@ -163,9 +159,6 @@ public class DlgMatricula extends JDialog {
 		cboEstado.setSelectedIndex(1);
 		cboEstado.setBounds(541, 111, 129, 22);
 		panel.add(cboEstado);
-		btnNuevo.setBorder(UIManager.getBorder("Button.border"));
-		btnNuevo.setBounds(28, 596, 89, 32);
-		panel_1.add(btnNuevo);
 		
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {

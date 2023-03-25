@@ -32,6 +32,7 @@ import java.awt.Font;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 
 public class DlgAlumno extends JDialog {
 
@@ -165,6 +166,7 @@ public class DlgAlumno extends JDialog {
 		comboBox.setEnabled(false);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
 		scrollPane.setEnabled(false);
 		scrollPane.setBounds(10, 334, 850, 293);
 		contentPanel.add(scrollPane);

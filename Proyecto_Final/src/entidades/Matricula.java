@@ -1,20 +1,19 @@
 package entidades;
 public class Matricula {
-	private int numMatricula, codAlumno ,codCurso, estado;
-	private String fecha,hora;
+	private int numMatricula, codAlumno ,codCurso;
+	private String fechaMatricula,horaMatricula;
 	
 	private static int cantMatricula;
 	static {
 		cantMatricula= 0;
 	}
 	
-	public Matricula(int numMatricula, int codAlumno, int codCurso, String fecha, String hora) {
-		super();
+	public Matricula(int numMatricula, int codAlumno, int codCurso, String fechaMatricula, String horaMatricula) {
 		this.numMatricula = numMatricula;
 		this.codAlumno = codAlumno;
 		this.codCurso = codCurso;
-		this.fecha = fecha;
-		this.hora = hora;
+		this.fechaMatricula = fechaMatricula;
+		this.horaMatricula = horaMatricula;
 	}
 
 	public int getNumMatricula() {
@@ -41,20 +40,20 @@ public class Matricula {
 		this.codCurso = codCurso;
 	}
 
-	public String getFecha() {
-		return fecha;
+	public String getFechaMatricula() {
+		return fechaMatricula;
 	}
 
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
+	public void setFechaMatricula(String fecha) {
+		this.fechaMatricula = fecha;
 	}
 
-	public String getHora() {
-		return hora;//ssss5s
+	public String getHoraMatricula() {
+		return horaMatricula;//ssss5s
 	}
 
-	public void setHora(String hora) {
-		this.hora = hora;
+	public void setHoraMatricula(String hora) {
+		this.horaMatricula = hora;
 	}
 
 	public static int getCantMatricula() {
@@ -66,22 +65,8 @@ public class Matricula {
 	}
 
 
-
 	public Matricula() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
-
-
-	public String getEstadoName() {
-		if(this.estado == 0) {
-			return "REGISTRADO";
-		}else if(this.estado == 1) {
-			return "MATRICULADO";
-		}else {
-			return "RETIRADO";
-		}
-	}
 	
 }

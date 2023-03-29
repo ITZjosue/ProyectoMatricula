@@ -33,6 +33,7 @@ import javax.swing.UIManager;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.ScrollPaneConstants;
 
 public class DlgAlumno extends JDialog {
 
@@ -67,14 +68,14 @@ public class DlgAlumno extends JDialog {
 	 */
 	public DlgAlumno() {
 		setTitle("Mantenimiento Alumno");
-		setBounds(100, 100, 886, 677);
+		setBounds(100, 100, 886, 650);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(593, 281, 89, 32);
+		btnCancelar.setBounds(584, 256, 89, 32);
 		contentPanel.add(btnCancelar);
 		btnCancelar.setEnabled(false);
 		
@@ -82,14 +83,14 @@ public class DlgAlumno extends JDialog {
 		panel.setBackground(new Color(202, 211, 217));
 		panel.setForeground(Color.BLACK);
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Datos Personales", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(10, 50, 850, 220);
+		panel.setBounds(10, 50, 850, 193);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(202, 211, 217));
-		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(10, 19, 830, 190);
+		panel_1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_1.setBounds(10, 19, 830, 163);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -166,9 +167,11 @@ public class DlgAlumno extends JDialog {
 		comboBox.setEnabled(false);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBorder(new LineBorder(new Color(192, 192, 192)));
+		scrollPane.setBackground(new Color(192, 192, 192));
 		scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
 		scrollPane.setEnabled(false);
-		scrollPane.setBounds(10, 334, 850, 293);
+		scrollPane.setBounds(10, 299, 850, 293);
 		contentPanel.add(scrollPane);
 		
 		
@@ -180,20 +183,20 @@ public class DlgAlumno extends JDialog {
 		scrollPane.setViewportView(table);
 		
 		JButton btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(390, 281, 89, 32);
+		btnModificar.setBounds(390, 256, 89, 32);
 		contentPanel.add(btnModificar);
 		
 				JButton btnAdicionar = new JButton("Adicionar");
-				btnAdicionar.setBounds(201, 281, 89, 32);
+				btnAdicionar.setBounds(206, 256, 89, 32);
 				contentPanel.add(btnAdicionar);
 				
 						JButton btnAceptar = new JButton("Aceptar");
-						btnAceptar.setBounds(10, 281, 89, 32);
+						btnAceptar.setBounds(10, 254, 89, 32);
 						contentPanel.add(btnAceptar);
 						btnAceptar.setEnabled(false);
 						
 						JButton btnEliminar = new JButton("Eliminar");
-						btnEliminar.setBounds(771, 281, 89, 32);
+						btnEliminar.setBounds(771, 256, 89, 32);
 						contentPanel.add(btnEliminar);
 						
 						JLabel lblAlumno = new JLabel("Alumno");
@@ -203,7 +206,7 @@ public class DlgAlumno extends JDialog {
 						lblAlumno.setForeground(new Color(128, 0, 0));
 						lblAlumno.setFont(new Font("Arial Black", Font.PLAIN, 20));
 						lblAlumno.setBackground(new Color(202, 211, 217));
-						lblAlumno.setBounds(0, 0, 870, 638);
+						lblAlumno.setBounds(0, 0, 870, 611);
 						contentPanel.add(lblAlumno);
 						
 						btnEliminar.addActionListener(new ActionListener() {

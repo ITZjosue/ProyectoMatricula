@@ -34,6 +34,10 @@ import javax.swing.SwingConstants;
 
 public class DlgAlumno extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField codAlumno;
 	private JTextField nomAlumno;

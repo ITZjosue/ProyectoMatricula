@@ -3,6 +3,11 @@ package guis;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import libreria.*;
+
+import entidades.*;
+import arreglos.*;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -40,15 +45,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class DlgMatricula extends JDialog {
+	private JScrollPane scrollPane;
 	private JTextField txtNumMatricula;
-	private JTextField txtCodAlumno;
-	private JTextField txtFecha;
 	private JTextField txtCodCurso;
 	private JTextField txtHora;
 	private JTable tbRegistro;
 	
 	DefaultTableModel model = new DefaultTableModel();
-
+	ArregloMatricula am = new ArregloMatricula();
 
 	/**
 	 * Launch the application.
@@ -80,14 +84,10 @@ public class DlgMatricula extends JDialog {
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton btnNuevo = new JButton("Nuevo");
-		btnNuevo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(28, 50, 819, 203);
+		panel_2.setBounds(28, 50, 819, 201);
 		panel_1.add(panel_2);
 		panel_2.setForeground(Color.BLACK);
 		panel_2.setBackground(new Color(202, 211, 217));
@@ -108,44 +108,29 @@ public class DlgMatricula extends JDialog {
 		
 		JLabel lblCodAlumno = new JLabel("Código de Alumno:");
 		lblCodAlumno.setFont(new Font("Arial", Font.BOLD, 12));
-		lblCodAlumno.setBounds(10, 75, 129, 14);
+		lblCodAlumno.setBounds(406, 38, 129, 14);
 		panel.add(lblCodAlumno);
 		
-		JLabel lblCorreoElectrnico = new JLabel("Hora:");
-		lblCorreoElectrnico.setFont(new Font("Arial", Font.BOLD, 12));
-		lblCorreoElectrnico.setBounds(407, 75, 142, 14);
-		panel.add(lblCorreoElectrnico);
+		JLabel lblAlumnosSinMatricula = new JLabel("Alumnos no Matriculados:");
+		lblAlumnosSinMatricula.setFont(new Font("Arial", Font.BOLD, 12));
+		lblAlumnosSinMatricula.setBounds(10, 115, 147, 14);
+		panel.add(lblAlumnosSinMatricula);
 		
-		JLabel lblNombre_4 = new JLabel("Fecha:");
-		lblNombre_4.setFont(new Font("Arial", Font.BOLD, 12));
-		lblNombre_4.setBounds(10, 115, 129, 14);
-		panel.add(lblNombre_4);
+		JLabel lblCursosMatriculados = new JLabel("Cursos Matriculados:");
+		lblCursosMatriculados.setFont(new Font("Arial", Font.BOLD, 12));
+		lblCursosMatriculados.setBounds(10, 75, 129, 14);
+		panel.add(lblCursosMatriculados);
 		
-		JLabel lblNombre_5 = new JLabel("Código de Curso:");
-		lblNombre_5.setFont(new Font("Arial", Font.BOLD, 12));
-		lblNombre_5.setBounds(407, 38, 142, 14);
-		panel.add(lblNombre_5);
-		
-		JLabel lblNombre_4_1 = new JLabel("Estado:");
-		lblNombre_4_1.setFont(new Font("Arial", Font.BOLD, 12));
-		lblNombre_4_1.setBounds(407, 115, 129, 14);
-		panel.add(lblNombre_4_1);
+		JLabel lblCurso = new JLabel("Código de Curso:");
+		lblCurso.setFont(new Font("Arial", Font.BOLD, 12));
+		lblCurso.setBounds(406, 75, 142, 14);
+		panel.add(lblCurso);
 		
 		txtNumMatricula = new JTextField();
 		txtNumMatricula.setEditable(false);
 		txtNumMatricula.setBounds(162, 35, 211, 20);
 		panel.add(txtNumMatricula);
 		txtNumMatricula.setColumns(10);
-		
-		txtCodAlumno = new JTextField();
-		txtCodAlumno.setBounds(162, 72, 211, 20);
-		panel.add(txtCodAlumno);
-		txtCodAlumno.setColumns(10);
-		
-		txtFecha = new JTextField();
-		txtFecha.setBounds(162, 112, 211, 20);
-		panel.add(txtFecha);
-		txtFecha.setColumns(10);
 		
 		txtCodCurso = new JTextField();
 		txtCodCurso.setBounds(541, 35, 227, 20);
@@ -157,18 +142,8 @@ public class DlgMatricula extends JDialog {
 		panel.add(txtHora);
 		txtHora.setColumns(10);
 		
-		JComboBox cboEstado = new JComboBox();
-		cboEstado.setToolTipText("");
-		cboEstado.setModel(new DefaultComboBoxModel(new String[] {"Registrado", "Matriculado", "Retirado"}));
-		cboEstado.setSelectedIndex(1);
-		cboEstado.setBounds(541, 111, 129, 22);
-		panel.add(cboEstado);
-		btnNuevo.setBorder(UIManager.getBorder("Button.border"));
-		btnNuevo.setBounds(28, 596, 89, 32);
-		panel_1.add(btnNuevo);
-		
-		JButton btnAdicionar = new JButton("Adicionar");
-		btnAdicionar.addActionListener(new ActionListener() {
+		JButton btnMatricular = new JButton("Matricular");
+		btnMatricular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -188,13 +163,13 @@ public class DlgMatricula extends JDialog {
 			}
 		});
 		btnCancelar.setBorder(UIManager.getBorder("Button.border"));
-		btnCancelar.setBounds(172, 263, 89, 32);
+		btnCancelar.setBounds(176, 264, 89, 32);
 		panel_1.add(btnCancelar);
-		btnAdicionar.setBounds(172, 596, 89, 32);
-		panel_1.add(btnAdicionar);
+		btnMatricular.setBounds(331, 262, 89, 32);
+		panel_1.add(btnMatricular);
 		
 		JButton btnConsultar = new JButton("Consultar");
-		btnConsultar.setBounds(325, 596, 89, 32);
+		btnConsultar.setBounds(476, 262, 89, 32);
 		panel_1.add(btnConsultar);
 		
 		JButton btnModificar = new JButton("Modificar");
@@ -202,11 +177,11 @@ public class DlgMatricula extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnModificar.setBounds(471, 596, 89, 32);
+		btnModificar.setBounds(622, 262, 89, 32);
 		panel_1.add(btnModificar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(620, 596, 89, 32);
+		btnEliminar.setBounds(758, 262, 89, 32);
 		panel_1.add(btnEliminar);
 		
 		JButton btnCerrar = new JButton("Cerrar");
@@ -218,10 +193,11 @@ public class DlgMatricula extends JDialog {
 		panel_1.add(scrollPane);
 		
 		tbRegistro = new JTable();
+		tbRegistro.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setViewportView(tbRegistro);
 		tbRegistro.setFillsViewportHeight(true);
 		
-		JLabel lblNewLabel = new JLabel("Registro de Alumno");
+		JLabel lblNewLabel = new JLabel("Registro de Matrícula");
 		lblNewLabel.setBounds(0, 0, 873, 639);
 		panel_1.add(lblNewLabel);
 		lblNewLabel.setOpaque(true);
@@ -233,11 +209,83 @@ public class DlgMatricula extends JDialog {
 		scrollPane.setViewportView(tbRegistro);
 		
 		model = new DefaultTableModel();
-		model.addColumn("CODIGO");
-		model.addColumn("CODIGO");
-		model.addColumn("CODIGO");
-		model.addColumn("CODIGO");
+		model.addColumn("NUM_MATRICULA");
+		model.addColumn("COD_ALUMNO");
+		model.addColumn("COD_CURSO");
+		model.addColumn("FECHA MATRICULA");
+		model.addColumn("HORA MATRICULA");
 		
+		tbRegistro.setModel(model);
+		txtHora.setEditable(false);
+		btnMatricular.setEnabled(false);
+		if (am.tamanio() == 0)
+			visibleInvisible(false);
+		
+		ajustarAnchoColumnas();
+		listar();
+		editarFila();
+		
+		JLabel lblCursosDisponibles = new JLabel("Cursos Disponibles:");
+		lblCursosDisponibles.setFont(new Font("Arial", Font.BOLD, 12));
+		lblCursosDisponibles.setBounds(406, 115, 129, 14);
+		panel.add(lblCursosDisponibles);
+		
+		JComboBox cboCursoDispo = new JComboBox();
+		cboCursoDispo.setBounds(541, 111, 227, 22);
+		panel.add(cboCursoDispo);
+		
+		JComboBox cboCursosMatri = new JComboBox();
+		cboCursosMatri.setBounds(162, 71, 211, 22);
+		panel.add(cboCursosMatri);
+		
+		JComboBox cboAluNoMatri = new JComboBox();
+		cboAluNoMatri.setBounds(162, 111, 211, 22);
+		panel.add(cboAluNoMatri);
+		
+		
+	}
+	
+
+//  Métodos que retornan valor (con parámetros)
+	int anchoColumna(int porcentaje) {
+		return porcentaje * scrollPane.getWidth() / 100;
+	}
+	int confirmar(String s) {
+		return JOptionPane.showConfirmDialog(this, s, "Alerta", 0, 1, null);
+	}
+	int confirmar(String s1, String s2) {
+		return JOptionPane.showConfirmDialog(this, s1, s2, 0, 1, null);
+	}
+	String confirmarIngreso(String s) {
+		return JOptionPane.showInputDialog(this, "", s, 3);
+	}
+	String ajustar(int numero) {
+		return String.format("%02d", numero);
+	}
+
+
+	private int leerNumeroMatricula() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	private void editarFila() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void listar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void ajustarAnchoColumnas() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void visibleInvisible(boolean b) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -248,7 +296,5 @@ public class DlgMatricula extends JDialog {
 	int confirmDlg(String s) {
 		return JOptionPane.showConfirmDialog(this, s);
 	}
-	
-	
 }
 

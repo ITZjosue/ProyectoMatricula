@@ -31,6 +31,9 @@ import javax.swing.border.SoftBevelBorder;
 import java.awt.Font;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.ScrollPaneConstants;
 
 public class DlgAlumno extends JDialog {
 
@@ -60,7 +63,7 @@ public class DlgAlumno extends JDialog {
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace();//
 		}
 	}
 
@@ -69,103 +72,111 @@ public class DlgAlumno extends JDialog {
 	 */
 	public DlgAlumno() {
 		setTitle("Mantenimiento Alumno");
-		setBounds(100, 100, 698, 642);
+		setBounds(100, 100, 886, 650);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(584, 256, 89, 32);
+		contentPanel.add(btnCancelar);
+		btnCancelar.setEnabled(false);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(202, 211, 217));
+		panel.setForeground(Color.BLACK);
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Datos Personales", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBounds(10, 50, 850, 193);
+		contentPanel.add(panel);
+		panel.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(202, 211, 217));
+		panel_1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_1.setBounds(10, 19, 830, 163);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
 
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("Código:");
-		lblNewJgoodiesLabel.setBounds(10, 11, 53, 14);
-		contentPanel.add(lblNewJgoodiesLabel);
+		lblNewJgoodiesLabel.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel.setBounds(472, 19, 53, 14);
+		panel_1.add(lblNewJgoodiesLabel);
 
 		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("Nombres:");
-		lblNewJgoodiesLabel_1.setBounds(10, 36, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel_1);
+		lblNewJgoodiesLabel_1.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel_1.setBounds(6, 19, 92, 14);
+		panel_1.add(lblNewJgoodiesLabel_1);
 
 		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("Apellidos:");
-		lblNewJgoodiesLabel_2.setBounds(10, 61, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel_2);
+		lblNewJgoodiesLabel_2.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel_2.setBounds(6, 57, 92, 14);
+		panel_1.add(lblNewJgoodiesLabel_2);
 
 		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("DNI:");
-		lblNewJgoodiesLabel_3.setBounds(10, 86, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel_3);
+		lblNewJgoodiesLabel_3.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel_3.setBounds(6, 94, 92, 14);
+		panel_1.add(lblNewJgoodiesLabel_3);
 
 		JLabel lblNewJgoodiesLabel_4 = DefaultComponentFactory.getInstance().createLabel("Edad:");
-		lblNewJgoodiesLabel_4.setBounds(169, 86, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel_4);
+		lblNewJgoodiesLabel_4.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel_4.setBounds(472, 57, 92, 14);
+		panel_1.add(lblNewJgoodiesLabel_4);
 
 		JLabel lblNewJgoodiesLabel_5 = DefaultComponentFactory.getInstance().createLabel("Celular:");
-		lblNewJgoodiesLabel_5.setBounds(10, 120, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel_5);
+		lblNewJgoodiesLabel_5.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel_5.setBounds(6, 128, 92, 14);
+		panel_1.add(lblNewJgoodiesLabel_5);
 
 		JLabel lblNewJgoodiesLabel_6 = DefaultComponentFactory.getInstance().createLabel("Estado");
-		lblNewJgoodiesLabel_6.setBounds(10, 145, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel_6);
+		lblNewJgoodiesLabel_6.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel_6.setBounds(472, 128, 92, 14);
+		panel_1.add(lblNewJgoodiesLabel_6);
 
 		codAlumno = new JTextField();
+		codAlumno.setBounds(545, 16, 86, 20);
+		panel_1.add(codAlumno);
 		codAlumno.setEditable(false);
-		codAlumno.setBounds(73, 8, 86, 20);
-		contentPanel.add(codAlumno);
 		codAlumno.setColumns(10);
 
 		nomAlumno = new JTextField();
+		nomAlumno.setBounds(108, 54, 220, 20);
+		panel_1.add(nomAlumno);
 		nomAlumno.setColumns(10);
-		nomAlumno.setBounds(73, 33, 220, 20);
-		contentPanel.add(nomAlumno);
 
 		apeAlumno = new JTextField();
+		apeAlumno.setBounds(108, 16, 220, 20);
+		panel_1.add(apeAlumno);
 		apeAlumno.setColumns(10);
-		apeAlumno.setBounds(73, 58, 220, 20);
-		contentPanel.add(apeAlumno);
 
 		dniAlumno = new JTextField();
+		dniAlumno.setBounds(108, 91, 86, 20);
+		panel_1.add(dniAlumno);
 		dniAlumno.setColumns(10);
-		dniAlumno.setBounds(73, 86, 86, 20);
-		contentPanel.add(dniAlumno);
 		
 		celAlumno = new JTextField();
-		celAlumno.setBounds(73, 117, 86, 20);
-		contentPanel.add(celAlumno);
+		celAlumno.setBounds(108, 125, 86, 20);
+		panel_1.add(celAlumno);
 		celAlumno.setColumns(10);
 		
 		edadAlumno = new JTextField();
+		edadAlumno.setBounds(545, 54, 86, 20);
+		panel_1.add(edadAlumno);
 		edadAlumno.setColumns(10);
-		edadAlumno.setBounds(207, 86, 86, 20);
-		contentPanel.add(edadAlumno);
-
-		JButton btnAdicionar = new JButton("Adicionar");
-		btnAdicionar.setBounds(388, 21, 89, 23);
-		contentPanel.add(btnAdicionar);
-		
-		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(388, 91, 89, 23);
-		contentPanel.add(btnEliminar);
-		
-		JButton btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(388, 57, 89, 23);
-		contentPanel.add(btnModificar);
-
-		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.setEnabled(false);
-		btnAceptar.setBounds(10, 173, 89, 23);
-		contentPanel.add(btnAceptar);
-
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setEnabled(false);
-		btnCancelar.setBounds(109, 173, 89, 23);
-		contentPanel.add(btnCancelar);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setEnabled(false);
-		scrollPane.setBounds(10, 207, 662, 385);
-		contentPanel.add(scrollPane);
 		
 		comboBox = new JComboBox();
+		comboBox.setBounds(545, 124, 114, 22);
+		panel_1.add(comboBox);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"REGISTRADO", "MATRICULADO", "RETIRADO"}));
-		comboBox.setBounds(73, 141, 114, 22);
-		contentPanel.add(comboBox);
 		comboBox.setEnabled(false);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBorder(new LineBorder(new Color(192, 192, 192)));
+		scrollPane.setBackground(new Color(192, 192, 192));
+		scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
+		scrollPane.setEnabled(false);
+		scrollPane.setBounds(10, 299, 850, 293);
+		contentPanel.add(scrollPane);
 		
 		
 		table = new JTable(model) {
@@ -175,6 +186,122 @@ public class DlgAlumno extends JDialog {
 		};
 		scrollPane.setViewportView(table);
 		
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(390, 256, 89, 32);
+		contentPanel.add(btnModificar);
+		
+				JButton btnAdicionar = new JButton("Adicionar");
+				btnAdicionar.setBounds(206, 256, 89, 32);
+				contentPanel.add(btnAdicionar);
+				
+						JButton btnAceptar = new JButton("Aceptar");
+						btnAceptar.setBounds(10, 254, 89, 32);
+						contentPanel.add(btnAceptar);
+						btnAceptar.setEnabled(false);
+						
+						JButton btnEliminar = new JButton("Eliminar");
+						btnEliminar.setBounds(771, 256, 89, 32);
+						contentPanel.add(btnEliminar);
+						
+						JLabel lblAlumno = new JLabel("Alumno");
+						lblAlumno.setVerticalAlignment(SwingConstants.TOP);
+						lblAlumno.setOpaque(true);
+						lblAlumno.setHorizontalAlignment(SwingConstants.CENTER);
+						lblAlumno.setForeground(new Color(128, 0, 0));
+						lblAlumno.setFont(new Font("Arial Black", Font.PLAIN, 20));
+						lblAlumno.setBackground(new Color(202, 211, 217));
+						lblAlumno.setBounds(0, 0, 870, 611);
+						contentPanel.add(lblAlumno);
+						
+						btnEliminar.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								int row = table.getSelectedRow();
+								if(row == -1) {
+									mensaje("Necesita escoger un alumno");
+								}else {
+									int opt = confirmDlg("Seguro que desea eliminar al alumno?");
+									if( table.getValueAt(row,4).toString() == "REGISTRADO" && opt == 0) {
+										ArregloAlumno.deleteAlumnoByCode(Integer.parseInt(table.getValueAt(row,0).toString()));
+										listarAlumnos();
+									}else if(table.getValueAt(row,4) == "MATRICULADO"){
+										mensaje("El alumno no puede ser eliminado porque está matriculado");
+									}
+									else if(table.getValueAt(row, 4) == "RETIRADO") {
+										mensaje("El alumno no puede ser eliminado porque está retirado");
+									}										
+								}
+							}
+						});
+						
+						
+						btnAceptar.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								dniAlumno.setEditable(true);
+								modAlumno.setNombres(nomAlumno.getText()); 
+								modAlumno.setApellidos(apeAlumno.getText());
+								modAlumno.setDni(dniAlumno.getText());
+								modAlumno.setCelular(Integer.parseInt(celAlumno.getText()));
+								modAlumno.setEdad(Integer.parseInt(edadAlumno.getText()));
+								listarAlumnos();
+								btnAceptar.setEnabled(false);
+								btnCancelar.setEnabled(false);
+								btnAdicionar.setEnabled(true);
+								btnEliminar.setEnabled(true);
+								limpiarFormulario();
+							}
+						});
+				
+				btnAdicionar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if (!nomAlumno.getText().isEmpty() && !apeAlumno.getText().isEmpty() && !dniAlumno.getText().isEmpty() && !edadAlumno.getText().isEmpty() && !celAlumno.getText().isEmpty()) {
+							// VERIFICANDO QUE NO SE REPITA DNI
+							for(int i = 0;i<ArregloAlumno.getListaAlumnosLen();i++) {
+								if(ArregloAlumno.getAlumno(i).getDni().equals(dniAlumno.getText())) {
+									mensaje("Este dni ya está registrado");
+									return;
+								}
+							}
+							// VALIDACIONES
+							
+							Alumno nuevoAlumno = new Alumno(
+									nomAlumno.getText(), 
+									apeAlumno.getText(), 
+									dniAlumno.getText(), 
+									Integer.parseInt(edadAlumno.getText()),
+									Integer.parseInt(celAlumno.getText())
+									);
+							ArregloAlumno.setListaAlumnos(nuevoAlumno);
+							listarAlumnos();
+							limpiarFormulario();
+						}else {
+							mensaje("Faltan datos");
+						}
+					}
+				});
+		
+				btnModificar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int row = table.getSelectedRow();
+						if(row == -1) {
+							mensaje("Necesita escojer un alumno");
+						}else {
+							btnAdicionar.setEnabled(false);
+							btnEliminar.setEnabled(false);
+							btnAceptar.setEnabled(true);
+							btnCancelar.setEnabled(true);
+							dniAlumno.setEditable(false);
+							modAlumno = ArregloAlumno.getAlumnoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
+							nomAlumno.setText(modAlumno.getNombres());
+							apeAlumno.setText(modAlumno.getApellidos());
+							dniAlumno.setText(modAlumno.getDni());
+							edadAlumno.setText(String.valueOf(modAlumno.getEdad()));
+							codAlumno.setText(String.valueOf(modAlumno.getCodAlumno()));
+							celAlumno.setText(String.valueOf(modAlumno.getCelular()));
+							comboBox.setSelectedIndex(modAlumno.getEstado());
+						}
+					}
+				});
+		
 		// creating columns
 		model.addColumn("Codigo");
 		model.addColumn("DNI");
@@ -183,106 +310,6 @@ public class DlgAlumno extends JDialog {
 		model.addColumn("Estado");
 		
 		listarAlumnos();
-		
-		btnAdicionar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!nomAlumno.getText().isEmpty() && !apeAlumno.getText().isEmpty() && !dniAlumno.getText().isEmpty() && !edadAlumno.getText().isEmpty() && !celAlumno.getText().isEmpty()) {
-					// VERIFICANDO QUE NO SE REPITA DNI
-					for(int i = 0;i<ArregloAlumno.getListaAlumnosLen();i++) {
-						if(ArregloAlumno.getAlumno(i).getDni().equals(dniAlumno.getText())) {
-							mensaje("Este dni ya está registrado");
-							return;
-						}
-					}
-					// VALIDACIONES
-					
-					Alumno nuevoAlumno = new Alumno(
-							nomAlumno.getText(), 
-							apeAlumno.getText(), 
-							dniAlumno.getText(), 
-							Integer.parseInt(edadAlumno.getText()),
-							Integer.parseInt(celAlumno.getText())
-							);
-					ArregloAlumno.setListaAlumnos(nuevoAlumno);
-					listarAlumnos();
-					limpiarFormulario();
-				}else {
-					mensaje("Faltan datos");
-				}
-			}
-		});
-		
-		btnEliminar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int row = table.getSelectedRow();
-				if(row == -1) {
-					mensaje("Necesita escoger un alumno");
-				}else {
-					int opt = confirmDlg("Seguro que desea eliminar al alumno?");
-					if( table.getValueAt(row,4).toString() == "REGISTRADO" && opt == 0) {
-						ArregloAlumno.deleteAlumnoByCode(Integer.parseInt(table.getValueAt(row,0).toString()));
-						listarAlumnos();
-					}else if(table.getValueAt(row,4) == "MATRICULADO"){
-						mensaje("El alumno no puede ser eliminado porque está matriculado");
-					}
-					else if(table.getValueAt(row, 4) == "RETIRADO") {
-						mensaje("El alumno no puede ser eliminado porque está retirado");
-					}										
-				}
-			}
-		});
-
-		btnModificar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int row = table.getSelectedRow();
-				if(row == -1) {
-					mensaje("Necesita escojer un alumno");
-				}else {
-					btnAdicionar.setEnabled(false);
-					btnEliminar.setEnabled(false);
-					btnAceptar.setEnabled(true);
-					btnCancelar.setEnabled(true);
-					dniAlumno.setEditable(false);
-					modAlumno = ArregloAlumno.getAlumnoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
-					nomAlumno.setText(modAlumno.getNombres());
-					apeAlumno.setText(modAlumno.getApellidos());
-					dniAlumno.setText(modAlumno.getDni());
-					edadAlumno.setText(String.valueOf(modAlumno.getEdad()));
-					codAlumno.setText(String.valueOf(modAlumno.getCodAlumno()));
-					celAlumno.setText(String.valueOf(modAlumno.getCelular()));
-					comboBox.setSelectedIndex(modAlumno.getEstado());
-				}
-			}
-		});
-		
-		
-		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dniAlumno.setEditable(true);
-				modAlumno.setNombres(nomAlumno.getText()); 
-				modAlumno.setApellidos(apeAlumno.getText());
-				modAlumno.setDni(dniAlumno.getText());
-				modAlumno.setCelular(Integer.parseInt(celAlumno.getText()));
-				modAlumno.setEdad(Integer.parseInt(edadAlumno.getText()));
-				listarAlumnos();
-				btnAceptar.setEnabled(false);
-				btnCancelar.setEnabled(false);
-				btnAdicionar.setEnabled(true);
-				btnEliminar.setEnabled(true);
-				limpiarFormulario();
-			}
-		});
-		
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limpiarFormulario();
-				dniAlumno.setEditable(true);
-				btnAceptar.setEnabled(false);
-				btnCancelar.setEnabled(false);
-				btnAdicionar.setEnabled(true);
-				btnEliminar.setEnabled(true);
-			}
-		});
 
 		
 	}

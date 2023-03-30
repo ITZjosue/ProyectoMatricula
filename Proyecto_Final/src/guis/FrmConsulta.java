@@ -50,7 +50,7 @@ public class FrmConsulta extends JFrame {
 	 */
 	public FrmConsulta() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 549, 489);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -62,7 +62,7 @@ public class FrmConsulta extends JFrame {
 		lblNewLabel.setForeground(SystemColor.desktop);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel.setBounds(10, 10, 416, 32);
+		lblNewLabel.setBounds(58, 10, 416, 32);
 		contentPane.add(lblNewLabel);
 		
 		lblNewLabel_1 = new JLabel("Codigo Alumno:");
@@ -87,18 +87,18 @@ public class FrmConsulta extends JFrame {
 		
 		btnProcesar = new JButton("Procesar");
 		btnProcesar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnProcesar.setBounds(315, 52, 96, 21);
+		btnProcesar.setBounds(427, 53, 96, 21);
 		contentPane.add(btnProcesar);
 		
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnBorrar.setBounds(315, 81, 96, 21);
+		btnBorrar.setBounds(427, 79, 96, 21);
 		contentPane.add(btnBorrar);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(10, 110, 416, 132);
+		scrollPane.setBounds(10, 129, 513, 310);
 		contentPane.add(scrollPane);
 		
 		textArea = new JTextArea();

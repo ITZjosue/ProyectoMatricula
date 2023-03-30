@@ -85,17 +85,12 @@ public class ArregloMatricula {
 				codCurso = Integer.parseInt(s[2].trim());
 				fechaMatricula = s[3].trim();
 				horaMatricula = s[4].trim();
-				adicionar(new Matricula(numMatricula,codAlumno,codCurso,fechaMatricula,horaMatricula));
+				//adicionar(new Matricula(numMatricula,codAlumno,codCurso,fechaMatricula,horaMatricula));
 			}
 			br.close();
 		} catch (Exception e) {
 		}
 		
 	}
-	public int codigoCorrelativo() {
-		if(tamanio() == 0)
-			return 100001;
-		else
-			return obtener(tamanio()-1).getNumMatricula() + 1;
-	}
+
 }

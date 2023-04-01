@@ -281,7 +281,7 @@ public class MainMenu extends JFrame {
 		iconSystem.setBackground(new Color(0, 128, 255));
 		iconSystem.setOpaque(true);
 		iconSystem.setHorizontalAlignment(SwingConstants.CENTER);
-		iconSystem.setIcon(new ImageIcon("C:\\Users\\the_m\\Desktop\\icons\\folder_system_15426 (1).png"));
+		iconSystem.setIcon(new ImageIcon("C:\\Users\\the_m\\git\\ProyectoMatricula\\Proyecto_Final\\img\\icons\\folder_system_15426 (1).png"));
 		iconSystem.setBounds(0, 0, 102, 71);
 		contentPane.add(iconSystem);
 		if(ArregloAlumno.getListaAlumnosLen() < 1) {

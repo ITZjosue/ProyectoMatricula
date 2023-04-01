@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import libreria.*;
 
 import entidades.*;
+
 import arreglos.*;
 
 import javax.swing.JButton;
@@ -42,14 +43,24 @@ import java.awt.Window.Type;
 import java.awt.Toolkit;
 import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 
-public class DlgMatricula extends JDialog {
+public class DlgMatricula extends JDialog implements ActionListener, MouseListener {
 	private JScrollPane scrollPane;
 	private JTextField txtNumMatricula;
 	private JTextField txtCodCurso;
 	private JTextField txtHora;
 	private JTable tbRegistro;
+	private JComboBox <String> cboAlumnoNoMatriculado;
+	private JComboBox <String> cboCursoDispo;
+	
 	
 	DefaultTableModel model = new DefaultTableModel();
 	ArregloMatricula am = new ArregloMatricula();
@@ -145,6 +156,7 @@ public class DlgMatricula extends JDialog {
 		JButton btnMatricular = new JButton("Matricular");
 		btnMatricular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				generarMatricula();
 			}
 		});
 		
@@ -217,7 +229,7 @@ public class DlgMatricula extends JDialog {
 		
 		tbRegistro.setModel(model);
 		txtHora.setEditable(false);
-		btnMatricular.setEnabled(false);
+
 		if (am.tamanio() == 0)
 			visibleInvisible(false);
 		
@@ -230,21 +242,41 @@ public class DlgMatricula extends JDialog {
 		lblCursosDisponibles.setBounds(406, 115, 129, 14);
 		panel.add(lblCursosDisponibles);
 		
-		JComboBox cboCursoDispo = new JComboBox();
+		cboCursoDispo = new JComboBox <String> ();
 		cboCursoDispo.setBounds(541, 111, 227, 22);
 		panel.add(cboCursoDispo);
+		
 		
 		JComboBox cboCursosMatri = new JComboBox();
 		cboCursosMatri.setBounds(162, 71, 211, 22);
 		panel.add(cboCursosMatri);
 		
-		JComboBox cboAluNoMatri = new JComboBox();
-		cboAluNoMatri.setBounds(162, 111, 211, 22);
-		panel.add(cboAluNoMatri);
-		
-		
+		cboAlumnoNoMatriculado = new JComboBox <String> ();
+		cboAlumnoNoMatriculado.addActionListener(this);
+		cboAlumnoNoMatriculado.addMouseListener(this);
+		cboAlumnoNoMatriculado.setBounds(162, 111, 211, 22);
+		panel.add(cboAlumnoNoMatriculado);
+		insertarData();
+
 	}
 	
+	//
+	public void insertarData(){
+		for (int i = 0; i <ArregloAlumno.getListaAlumnosLen(); i++) {
+			if(ArregloAlumno.getAlumno(i).getEstado()==0);
+			cboAlumnoNoMatriculado.addItem("" + ArregloAlumno.getAlumno(i).getCodAlumno());
+		}
+		for (int i = 0; i <ArregloCurso.getCantidadCursos(); i++) {
+			cboCursoDispo.addItem("" + ArregloCurso.getCurso(i).getCodCurso());
+		}
+		
+	}
+	public void generarMatricula() {
+		int codAlumno = Integer.parseInt(cboAlumnoNoMatriculado.getSelectedItem().toString());
+
+		int codCurso = Integer.parseInt(cboCursoDispo.getSelectedItem().toString());
+		Matricula newMatricula = new Matricula();
+	}
 
 //  Métodos que retornan valor (con parámetros)
 	int anchoColumna(int porcentaje) {
@@ -262,7 +294,6 @@ public class DlgMatricula extends JDialog {
 	String ajustar(int numero) {
 		return String.format("%02d", numero);
 	}
-
 
 	private int leerNumeroMatricula() {
 		// TODO Auto-generated method stub
@@ -296,5 +327,42 @@ public class DlgMatricula extends JDialog {
 	int confirmDlg(String s) {
 		return JOptionPane.showConfirmDialog(this, s);
 	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
 

@@ -1,6 +1,6 @@
 package entidades;
 public class Matricula {
-	private int numMatricula, codAlumno ,codCurso;
+	private int numMatricula,codAlumno ,codCurso;
 	private String fechaMatricula,horaMatricula;
 	
 	private static int cantMatricula;
@@ -8,8 +8,9 @@ public class Matricula {
 		cantMatricula= 0;
 	}
 	
-	public Matricula(int numMatricula, int codAlumno, int codCurso, String fechaMatricula, String horaMatricula) {
-		this.numMatricula = numMatricula;
+	public Matricula(int codAlumno, int codCurso,String numMtricula, String fechaMatricula, String horaMatricula) {
+		cantMatricula ++;
+		this.numMatricula = 10000 + cantMatricula;
 		this.codAlumno = codAlumno;
 		this.codCurso = codCurso;
 		this.fechaMatricula = fechaMatricula;
@@ -49,7 +50,7 @@ public class Matricula {
 	}
 
 	public String getHoraMatricula() {
-		return horaMatricula;//ssss5s
+		return horaMatricula;
 	}
 
 	public void setHoraMatricula(String hora) {
@@ -63,7 +64,6 @@ public class Matricula {
 	public static void setCantMatricula(int cantMatricula) {
 		Matricula.cantMatricula = cantMatricula;
 	}
-
 
 	public Matricula() {
 	}

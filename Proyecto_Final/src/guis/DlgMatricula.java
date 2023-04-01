@@ -5,8 +5,8 @@ import java.awt.FlowLayout;
 
 import libreria.*;
 
-import entidades.Matricula;
-import entidades.Alumno;
+import entidades.*;
+
 import arreglos.*;
 
 import javax.swing.JButton;

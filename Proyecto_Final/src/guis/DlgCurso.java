@@ -1,12 +1,20 @@
 package guis;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,6 +31,8 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 
 public class DlgCurso extends JDialog {
 
@@ -54,71 +64,18 @@ public class DlgCurso extends JDialog {
 	 */
 	public DlgCurso() {
 		setTitle("Cursos");
-		setBounds(100, 100, 658, 516);
+		setBounds(100, 100, 886, 650);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("Codigo:");
-		lblNewJgoodiesLabel.setBounds(10, 11, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel);
-		
-		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("Asignatura:");
-		lblNewJgoodiesLabel_1.setBounds(10, 36, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel_1);
-		
-		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("Ciclo:");
-		lblNewJgoodiesLabel_2.setBounds(10, 61, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel_2);
-		
-		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("Creditos:");
-		lblNewJgoodiesLabel_3.setBounds(10, 86, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel_3);
-		
-		JLabel lblNewJgoodiesLabel_4 = DefaultComponentFactory.getInstance().createLabel("Cantidad Horas:");
-		lblNewJgoodiesLabel_4.setBounds(10, 111, 92, 14);
-		contentPanel.add(lblNewJgoodiesLabel_4);
-		
-		JButton btnAdicionar = new JButton("Adicionar");
-		btnAdicionar.setBounds(543, 7, 89, 23);
-		contentPanel.add(btnAdicionar);
-		
-		JButton btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(543, 32, 89, 23);
-		contentPanel.add(btnModificar);
-		
-		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(543, 57, 89, 23);
-		contentPanel.add(btnEliminar);
-		
-		txtCodigo = new JTextField();
-		txtCodigo.setBounds(119, 8, 165, 20);
-		contentPanel.add(txtCodigo);
-		txtCodigo.setColumns(10);
-		
-		txtAsignatura = new JTextField();
-		txtAsignatura.setColumns(10);
-		txtAsignatura.setBounds(119, 33, 165, 20);
-		contentPanel.add(txtAsignatura);
-		
-		txtCiclo = new JTextField();
-		txtCiclo.setColumns(10);
-		txtCiclo.setBounds(119, 58, 86, 20);
-		contentPanel.add(txtCiclo);
-		
-		txtCreditos = new JTextField();
-		txtCreditos.setColumns(10);
-		txtCreditos.setBounds(119, 83, 86, 20);
-		contentPanel.add(txtCreditos);
-		
-		txtCantHoras = new JTextField();
-		txtCantHoras.setColumns(10);
-		txtCantHoras.setBounds(119, 108, 86, 20);
-		contentPanel.add(txtCantHoras);
-		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 185, 622, 281);
+		scrollPane.setBorder(new LineBorder(new Color(192, 192, 192)));
+		scrollPane.setBackground(new Color(192, 192, 192));
+		scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
+		scrollPane.setEnabled(false);
+		scrollPane.setBounds(10, 299, 850, 293);
 		contentPanel.add(scrollPane);
 		
 		table = new JTable(model) {
@@ -127,6 +84,98 @@ public class DlgCurso extends JDialog {
 			}
 		};
 		scrollPane.setViewportView(table);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(202, 211, 217));
+		panel.setForeground(Color.BLACK);
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Datos Personales", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBounds(10, 50, 850, 193);
+		contentPanel.add(panel);
+		panel.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(202, 211, 217));
+		panel_1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_1.setBounds(10, 19, 830, 163);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("Codigo:");
+		lblNewJgoodiesLabel.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel.setBounds(472, 19, 53, 14);
+		panel_1.add(lblNewJgoodiesLabel);
+		
+		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("Asignatura:");
+		lblNewJgoodiesLabel_1.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel_1.setBounds(6, 19, 92, 14);
+		panel_1.add(lblNewJgoodiesLabel_1);
+		
+		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("Ciclo:");
+		lblNewJgoodiesLabel_2.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel_2.setBounds(6, 78, 92, 14);
+		panel_1.add(lblNewJgoodiesLabel_2);
+		
+		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("Creditos:");
+		lblNewJgoodiesLabel_3.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel_3.setBounds(6, 123, 92, 14);
+		panel_1.add(lblNewJgoodiesLabel_3);
+		
+		JLabel lblNewJgoodiesLabel_4 = DefaultComponentFactory.getInstance().createLabel("Cantidad Horas:");
+		lblNewJgoodiesLabel_4.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewJgoodiesLabel_4.setBounds(472, 78, 92, 14);
+		panel_1.add(lblNewJgoodiesLabel_4);
+		
+		txtCodigo = new JTextField();
+		txtCodigo.setBounds(576, 16, 86, 20);
+		panel_1.add(txtCodigo);
+		txtCodigo.setColumns(10);
+		
+		txtAsignatura = new JTextField();
+		txtAsignatura.setBounds(108, 75, 220, 20);
+		panel_1.add(txtAsignatura);
+		txtAsignatura.setColumns(10);
+		
+		txtCiclo = new JTextField();
+		txtCiclo.setBounds(108, 16, 220, 20);
+		panel_1.add(txtCiclo);
+		txtCiclo.setColumns(10);
+		
+		txtCreditos = new JTextField();
+		txtCreditos.setBounds(108, 120, 86, 20);
+		panel_1.add(txtCreditos);
+		txtCreditos.setColumns(10);
+		
+		txtCantHoras = new JTextField();
+		txtCantHoras.setBounds(576, 75, 86, 20);
+		panel_1.add(txtCantHoras);
+		txtCantHoras.setColumns(10);
+		
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(570, 254, 100, 34);
+		contentPanel.add(btnEliminar);
+		
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row = table.getSelectedRow();
+				int opt = confirmDlg("Seguro que desea eliminar el curso?");
+				if(row == -1) {
+					mensaje("Necesita esoger un curso");
+				}else {
+					if(opt == 0) {
+						ArregloCurso.deleteCursoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
+						listarCursos();										
+					}					
+				}
+			}
+		});
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.setBounds(20, 254, 100, 34);
+		contentPanel.add(btnAdicionar);
+		
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(385, 254, 100, 34);
+		contentPanel.add(btnModificar);
 		model.addColumn("Codigo");
 		model.addColumn("Asignatura");
 		model.addColumn("Ciclo");
@@ -134,13 +183,39 @@ public class DlgCurso extends JDialog {
 		model.addColumn("Horas");
 		listarCursos();
 		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(748, 254, 100, 34);
+		contentPanel.add(btnCancelar);
+		
 		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(13, 151, 89, 23);
+		btnAceptar.setBounds(199, 254, 100, 34);
 		contentPanel.add(btnAceptar);
 		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(116, 151, 89, 23);
-		contentPanel.add(btnCancelar);
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtCodigo.setEditable(true);
+				modCurso.setCiclo(Integer.parseInt(txtCiclo.getText()));
+				modCurso.setAsignatura(txtAsignatura.getText());
+				modCurso.setCreditos(Integer.parseInt(txtCreditos.getText()));
+				modCurso.setHoras(Integer.parseInt(txtCantHoras.getText()));
+				listarCursos();
+				btnAceptar.setEnabled(false);
+				btnCancelar.setEnabled(false);
+				btnAdicionar.setEnabled(true);
+				btnEliminar.setEnabled(true);
+				limpiarFormulario();
+			}
+		});
+		
+		JLabel lblAlumno = new JLabel("Curso");
+		lblAlumno.setVerticalAlignment(SwingConstants.TOP);
+		lblAlumno.setOpaque(true);
+		lblAlumno.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAlumno.setForeground(new Color(128, 0, 0));
+		lblAlumno.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		lblAlumno.setBackground(new Color(202, 211, 217));
+		lblAlumno.setBounds(0, 0, 870, 611);
+		contentPanel.add(lblAlumno);
 		
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -157,21 +232,6 @@ public class DlgCurso extends JDialog {
 					limpiarFormulario();
 				}else {
 					mensaje("Faltan datos");
-				}
-			}
-		});
-		
-		btnEliminar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int row = table.getSelectedRow();
-				int opt = confirmDlg("Seguro que desea eliminar el curso?");
-				if(row == -1) {
-					mensaje("Necesita esoger un curso");
-				}else {
-					if(opt == 0) {
-						ArregloCurso.deleteCursoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
-						listarCursos();										
-					}					
 				}
 			}
 		});
@@ -194,22 +254,6 @@ public class DlgCurso extends JDialog {
 					txtCantHoras.setText(String.valueOf(modCurso.getHoras()));
 					txtAsignatura.setText(modCurso.getAsignatura());
 				}
-			}
-		});
-		
-		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				txtCodigo.setEditable(true);
-				modCurso.setCiclo(Integer.parseInt(txtCiclo.getText()));
-				modCurso.setAsignatura(txtAsignatura.getText());
-				modCurso.setCreditos(Integer.parseInt(txtCreditos.getText()));
-				modCurso.setHoras(Integer.parseInt(txtCantHoras.getText()));
-				listarCursos();
-				btnAceptar.setEnabled(false);
-				btnCancelar.setEnabled(false);
-				btnAdicionar.setEnabled(true);
-				btnEliminar.setEnabled(true);
-				limpiarFormulario();
 			}
 		});
 		

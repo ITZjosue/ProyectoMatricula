@@ -16,7 +16,7 @@ public class Alumno {
 		this.estado = 0;
 		this.celular = celular;
 		cantAlumnos++;
-		this.codAlumno = cantAlumnos;
+		this.codAlumno = 202010000+cantAlumnos;
 	}
 	
 	public Alumno(String nombres, String apellidos,String dni, int edad, int celular,int estado) {
@@ -27,7 +27,7 @@ public class Alumno {
 		this.estado = estado;
 		this.celular = celular;
 		cantAlumnos++;
-		this.codAlumno = cantAlumnos;
+		this.codAlumno = 202010000+cantAlumnos;
 	}
 	public Alumno(String nombres, String apellidos,String dni, int edad, int celular,int estado,int codCurso) {
 		this.nombres = nombres;
@@ -37,7 +37,7 @@ public class Alumno {
 		this.estado = estado;
 		this.celular = celular;
 		cantAlumnos++;
-		this.codAlumno = cantAlumnos;
+		this.codAlumno = 202010000+cantAlumnos;
 		this.codCurso = codCurso;
 	}
 	

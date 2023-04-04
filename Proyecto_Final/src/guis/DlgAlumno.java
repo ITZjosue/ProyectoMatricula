@@ -37,6 +37,10 @@ import javax.swing.ScrollPaneConstants;
 
 public class DlgAlumno extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField codAlumno;
 	private JTextField nomAlumno;
@@ -257,8 +261,29 @@ public class DlgAlumno extends JDialog {
 									return;
 								}
 							}
-							// VALIDACIONES
-							
+							// VALIDANDO CAMPO EDAD
+							if(edadAlumno.getText().length() > 2) {
+								mensaje("La edad solo puede tener 2 digitos como máximo");
+								return;
+							}
+							if(Integer.parseInt(edadAlumno.getText()) == 0) {
+								mensaje("La edad no puede ser 0");
+								return;
+							}
+							// VALIDANDO CAMPO DNI
+							if(dniAlumno.getText().length() != 8) {
+								mensaje("El campo DNI debe contener 8 caracteres");
+								return;
+							}
+							if(!dniAlumno.getText().matches("[0-9]+")) {
+								mensaje("El dni no debe contener letras");
+								return;
+							}
+							// VALIDANDO CAMPOS NOMBRES Y APELLIDOS
+							if(nomAlumno.getText().contains("[0-9]")) {
+								mensaje("Los nombre y apellidos no deben contener numeros");
+								return;
+							}
 							Alumno nuevoAlumno = new Alumno(
 									nomAlumno.getText(), 
 									apeAlumno.getText(), 

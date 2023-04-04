@@ -3,6 +3,9 @@ import entidades.Alumno;
 import java.util.ArrayList;
 
 public class ArregloAlumno {
+	
+	private ArrayList<Alumno> arregloAlumnos;
+	
 	private static ArrayList<Alumno> listaAlumnos;
 	
 	static {

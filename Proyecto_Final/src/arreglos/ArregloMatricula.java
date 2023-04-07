@@ -34,6 +34,15 @@ public class ArregloMatricula {
 		return null;
 	}
 	
+	public static Matricula getMatriculaByAlumnoCode(int code) {
+		for(int i = 0; i < arregloMatricula.size();i++) {
+			if(arregloMatricula.get(i).getCodAlumno() == code) {
+				return arregloMatricula.get(i);
+			}
+		}
+		return null;
+	}
+	
 	public static void deleteMatriculaByCode(int code) {
 		for(int i = 0; i < arregloMatricula.size();i++) {
 			if(arregloMatricula.get(i).getNumMatricula() == code) {

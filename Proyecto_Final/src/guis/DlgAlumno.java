@@ -184,158 +184,178 @@ public class DlgAlumno extends JDialog {
 				return false;
 			}
 		};
-		scrollPane.setViewportView(table);
-		
-		JButton btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(390, 256, 89, 32);
-		contentPanel.add(btnModificar);
-		
-				JButton btnAdicionar = new JButton("Adicionar");
-				btnAdicionar.setBounds(206, 256, 89, 32);
-				contentPanel.add(btnAdicionar);
-				
-						JButton btnAceptar = new JButton("Aceptar");
-						btnAceptar.setBounds(10, 254, 89, 32);
-						contentPanel.add(btnAceptar);
-						btnAceptar.setEnabled(false);
-						
-						JButton btnEliminar = new JButton("Eliminar");
-						btnEliminar.setBounds(771, 256, 89, 32);
-						contentPanel.add(btnEliminar);
-						
-						JLabel lblAlumno = new JLabel("Alumno");
-						lblAlumno.setVerticalAlignment(SwingConstants.TOP);
-						lblAlumno.setOpaque(true);
-						lblAlumno.setHorizontalAlignment(SwingConstants.CENTER);
-						lblAlumno.setForeground(new Color(128, 0, 0));
-						lblAlumno.setFont(new Font("Arial Black", Font.PLAIN, 20));
-						lblAlumno.setBackground(new Color(202, 211, 217));
-						lblAlumno.setBounds(0, 0, 870, 611);
-						contentPanel.add(lblAlumno);
-						
-						btnEliminar.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								int row = table.getSelectedRow();
-								if(row == -1) {
-									mensaje("Necesita escoger un alumno");
-								}else {
-									int opt = confirmDlg("Seguro que desea eliminar al alumno?");
-									if( table.getValueAt(row,4).toString() == "REGISTRADO" && opt == 0) {
-										ArregloAlumno.deleteAlumnoByCode(Integer.parseInt(table.getValueAt(row,0).toString()));
-										listarAlumnos();
-									}else if(table.getValueAt(row,4) == "MATRICULADO"){
-										mensaje("El alumno no puede ser eliminado porque está matriculado");
-									}
-									else if(table.getValueAt(row, 4) == "RETIRADO") {
-										mensaje("El alumno no puede ser eliminado porque está retirado");
-									}										
-								}
-							}
-						});
-						
-						
-						btnAceptar.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								dniAlumno.setEditable(true);
-								modAlumno.setNombres(nomAlumno.getText()); 
-								modAlumno.setApellidos(apeAlumno.getText());
-								modAlumno.setDni(dniAlumno.getText());
-								modAlumno.setCelular(Integer.parseInt(celAlumno.getText()));
-								modAlumno.setEdad(Integer.parseInt(edadAlumno.getText()));
-								listarAlumnos();
-								btnAceptar.setEnabled(false);
-								btnCancelar.setEnabled(false);
-								btnAdicionar.setEnabled(true);
-								btnEliminar.setEnabled(true);
-								limpiarFormulario();
-							}
-						});
-				
-				btnAdicionar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (!nomAlumno.getText().isEmpty() && !apeAlumno.getText().isEmpty() && !dniAlumno.getText().isEmpty() && !edadAlumno.getText().isEmpty() && !celAlumno.getText().isEmpty()) {
-							// VERIFICANDO QUE NO SE REPITA DNI
-							for(int i = 0;i<ArregloAlumno.getListaAlumnosLen();i++) {
-								if(ArregloAlumno.getAlumno(i).getDni().equals(dniAlumno.getText())) {
-									mensaje("Este dni ya está registrado");
-									return;
-								}
-							}
-							// VALIDANDO CAMPO EDAD
-							if(edadAlumno.getText().length() > 2) {
-								mensaje("La edad solo puede tener 2 digitos como máximo");
-								return;
-							}
-							if(Integer.parseInt(edadAlumno.getText()) == 0) {
-								mensaje("La edad no puede ser 0");
-								return;
-							}
-							// VALIDANDO CAMPO DNI
-							if(dniAlumno.getText().length() != 8) {
-								mensaje("El campo DNI debe contener 8 caracteres");
-								return;
-							}
-							if(!dniAlumno.getText().matches("[0-9]+")) {
-								mensaje("El dni no debe contener letras");
-								return;
-							}
-							// VALIDANDO CAMPOS NOMBRES Y APELLIDOS
-							if(nomAlumno.getText().contains("[0-9]")) {
-								mensaje("Los nombre y apellidos no deben contener numeros");
-								return;
-							}
-							Alumno nuevoAlumno = new Alumno(
-									nomAlumno.getText(), 
-									apeAlumno.getText(), 
-									dniAlumno.getText(), 
-									Integer.parseInt(edadAlumno.getText()),
-									Integer.parseInt(celAlumno.getText())
-									);
-							ArregloAlumno.setListaAlumnos(nuevoAlumno);
-							listarAlumnos();
-							limpiarFormulario();
-						}else {
-							mensaje("Faltan datos");
-						}
-					}
-				});
-		
-				btnModificar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						int row = table.getSelectedRow();
-						if(row == -1) {
-							mensaje("Necesita escojer un alumno");
-						}else {
-							btnAdicionar.setEnabled(false);
-							btnEliminar.setEnabled(false);
-							btnAceptar.setEnabled(true);
-							btnCancelar.setEnabled(true);
-							dniAlumno.setEditable(false);
-							modAlumno = ArregloAlumno.getAlumnoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
-							nomAlumno.setText(modAlumno.getNombres());
-							apeAlumno.setText(modAlumno.getApellidos());
-							dniAlumno.setText(modAlumno.getDni());
-							edadAlumno.setText(String.valueOf(modAlumno.getEdad()));
-							codAlumno.setText(String.valueOf(modAlumno.getCodAlumno()));
-							celAlumno.setText(String.valueOf(modAlumno.getCelular()));
-							comboBox.setSelectedIndex(modAlumno.getEstado());
-						}
-					}
-				});
-		
 		// creating columns
 		model.addColumn("Codigo");
 		model.addColumn("DNI");
 		model.addColumn("Nombres");
 		model.addColumn("Apellidos");
 		model.addColumn("Estado");
+		scrollPane.setViewportView(table);
 		
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(390, 256, 89, 32);
+		contentPanel.add(btnModificar);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.setBounds(206, 256, 89, 32);
+		contentPanel.add(btnAdicionar);
+				
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(10, 254, 89, 32);
+		contentPanel.add(btnAceptar);
+		btnAceptar.setEnabled(false);
+						
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(771, 256, 89, 32);
+		contentPanel.add(btnEliminar);
+						
+		JLabel lblAlumno = new JLabel("Alumno");
+		lblAlumno.setVerticalAlignment(SwingConstants.TOP);
+		lblAlumno.setOpaque(true);
+		lblAlumno.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAlumno.setForeground(new Color(128, 0, 0));
+		lblAlumno.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		lblAlumno.setBackground(new Color(202, 211, 217));
+		lblAlumno.setBounds(0, 0, 870, 611);
+		contentPanel.add(lblAlumno);
+						
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row = table.getSelectedRow();
+				if(row == -1) {
+					mensaje("Necesita escoger un alumno");
+				}else {
+					int opt = confirmDlg("Seguro que desea eliminar al alumno?");
+					if( table.getValueAt(row,4).toString() == "REGISTRADO" && opt == 0) {
+						ArregloAlumno.deleteAlumnoByCode(Integer.parseInt(table.getValueAt(row,0).toString()));
+						listarAlumnos();
+					}else if(table.getValueAt(row,4) == "MATRICULADO"){
+						mensaje("El alumno no puede ser eliminado porque está matriculado");
+					}
+					else if(table.getValueAt(row, 4) == "RETIRADO") {
+						mensaje("El alumno no puede ser eliminado porque está retirado");
+					}										
+				}
+			}
+		});
+						
+						
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!nomAlumno.getText().isEmpty() && !apeAlumno.getText().isEmpty() && !dniAlumno.getText().isEmpty() && !edadAlumno.getText().isEmpty() && !celAlumno.getText().isEmpty()) {				
+					// VALIDANDO CAMPO EDAD
+					if(edadAlumno.getText().length() > 2) {
+						mensaje("La edad solo puede tener 2 digitos como máximo");
+						return;
+					}
+					if(Integer.parseInt(edadAlumno.getText()) == 0) {
+						mensaje("La edad no puede ser 0");
+						return;
+					}
+					// VALIDANDO CAMPOS NOMBRES Y APELLIDOS
+					if(nomAlumno.getText().contains("[0-9]")) {
+						mensaje("Los nombre y apellidos no deben contener numeros");
+						return;
+					}
+					dniAlumno.setEditable(true);
+					modAlumno.setNombres(nomAlumno.getText()); 
+					modAlumno.setApellidos(apeAlumno.getText());
+					modAlumno.setDni(dniAlumno.getText());
+					modAlumno.setCelular(Integer.parseInt(celAlumno.getText()));
+					modAlumno.setEdad(Integer.parseInt(edadAlumno.getText()));
+					listarAlumnos();
+					btnAceptar.setEnabled(false);
+					btnCancelar.setEnabled(false);
+					btnAdicionar.setEnabled(true);
+					btnEliminar.setEnabled(true);
+					limpiarFormulario();									
+				}else {
+					mensaje("Hay campos vacíos");
+				}
+			}
+		});
+		
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarFormulario();
+			}
+		});
+				
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!nomAlumno.getText().isEmpty() && !apeAlumno.getText().isEmpty() && !dniAlumno.getText().isEmpty() && !edadAlumno.getText().isEmpty() && !celAlumno.getText().isEmpty()) {
+					// VERIFICANDO QUE NO SE REPITA DNI
+					for(int i = 0;i<ArregloAlumno.getListaAlumnosLen();i++) {
+						if(ArregloAlumno.getAlumno(i).getDni().equals(dniAlumno.getText())) {
+							mensaje("Este dni ya está registrado");
+							return;
+						}
+					}
+					// VALIDANDO CAMPO EDAD
+					if(edadAlumno.getText().length() > 2) {
+						mensaje("La edad solo puede tener 2 digitos como máximo");
+						return;
+					}
+					if(Integer.parseInt(edadAlumno.getText()) == 0) {
+						mensaje("La edad no puede ser 0");
+						return;
+					}
+					// VALIDANDO CAMPO DNI
+					if(dniAlumno.getText().length() != 8) {
+						mensaje("El campo DNI debe contener 8 caracteres");
+						return;
+					}
+					if(!dniAlumno.getText().matches("[0-9]+")) {
+						mensaje("El dni no debe contener letras");
+						return;
+					}
+					// VALIDANDO CAMPOS NOMBRES Y APELLIDOS
+					if(nomAlumno.getText().contains("[0-9]")) {
+						mensaje("Los nombre y apellidos no deben contener numeros");
+						return;
+					}
+					Alumno nuevoAlumno = new Alumno(
+							nomAlumno.getText(), 
+							apeAlumno.getText(), 
+							dniAlumno.getText(), 
+							Integer.parseInt(edadAlumno.getText()),
+							Integer.parseInt(celAlumno.getText())
+							);
+					ArregloAlumno.setListaAlumnos(nuevoAlumno);
+					listarAlumnos();
+					limpiarFormulario();
+				}else {
+					mensaje("Faltan datos");
+				}
+			}
+		});
+		
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row = table.getSelectedRow();
+				if(row == -1) {
+					mensaje("Necesita escojer un alumno");
+				}else {
+					btnAdicionar.setEnabled(false);
+					btnEliminar.setEnabled(false);
+					btnAceptar.setEnabled(true);
+					btnCancelar.setEnabled(true);
+					dniAlumno.setEditable(false);
+					modAlumno = ArregloAlumno.getAlumnoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
+					nomAlumno.setText(modAlumno.getNombres());
+					apeAlumno.setText(modAlumno.getApellidos());
+					dniAlumno.setText(modAlumno.getDni());
+					edadAlumno.setText(String.valueOf(modAlumno.getEdad()));
+					codAlumno.setText(String.valueOf(modAlumno.getCodAlumno()));
+					celAlumno.setText(String.valueOf(modAlumno.getCelular()));
+					comboBox.setSelectedIndex(modAlumno.getEstado());
+				}
+			}
+		});
 		listarAlumnos();
-
-		
 	}
 	
-	public void listarAlumnos() {
+	void listarAlumnos() {
 		int rowsNumber = model.getRowCount();
 		for(int i = 0;i<rowsNumber;i++) {
 			model.removeRow(0);
@@ -351,7 +371,7 @@ public class DlgAlumno extends JDialog {
 		}
 	}
 	
-	public void limpiarFormulario() {
+	void limpiarFormulario() {
 		nomAlumno.setText("");
 		comboBox.setSelectedIndex(0);
 		apeAlumno.setText("");

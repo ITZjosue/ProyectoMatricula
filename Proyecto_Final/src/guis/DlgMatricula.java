@@ -81,18 +81,18 @@ public class DlgMatricula extends JDialog implements ActionListener, MouseListen
 		setTitle("REGISTRO\r\n");
 		setType(Type.POPUP);
 		setBackground(Color.DARK_GRAY);
-		setBounds(100, 100, 888, 678);
+		setBounds(100, 100, 991, 678);
 		getContentPane().setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 873, 639);
+		panel_1.setBounds(0, 0, 975, 639);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
 		
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(24, 50, 819, 164);
+		panel_2.setBounds(24, 50, 928, 164);
 		panel_1.add(panel_2);
 		panel_2.setForeground(Color.BLACK);
 		panel_2.setBackground(new Color(202, 211, 217));
@@ -100,7 +100,7 @@ public class DlgMatricula extends JDialog implements ActionListener, MouseListen
 		panel_2.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(20, 25, 778, 115);
+		panel.setBounds(20, 25, 886, 115);
 		panel_2.add(panel);
 		panel.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(new Color(202, 211, 217));
@@ -136,11 +136,11 @@ public class DlgMatricula extends JDialog implements ActionListener, MouseListen
 		panel_1.add(btnEliminar);
 		
 		JButton btnCerrar = new JButton("Cerrar");
-		btnCerrar.setBounds(754, 596, 89, 32);
+		btnCerrar.setBounds(863, 596, 89, 32);
 		panel_1.add(btnCerrar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(28, 307, 815, 261);
+		scrollPane.setBounds(28, 307, 924, 261);
 		panel_1.add(scrollPane);
 		
 		table = new JTable(model){
@@ -154,12 +154,14 @@ public class DlgMatricula extends JDialog implements ActionListener, MouseListen
 		
 		model.addColumn("NUM_MATRICULA");
 		model.addColumn("COD_ALUMNO");
+		model.addColumn("NOMBRE ALUMNO");
 		model.addColumn("COD_CURSO");
 		model.addColumn("FECHA MATRICULA");
 		model.addColumn("HORA MATRICULA");
+		model.addColumn("ESTADO_MATRICULA");
 
 		JLabel lblNewLabel = new JLabel("Registro de Matrícula");
-		lblNewLabel.setBounds(0, 0, 873, 639);
+		lblNewLabel.setBounds(0, 0, 974, 639);
 		panel_1.add(lblNewLabel);
 		lblNewLabel.setOpaque(true);
 		lblNewLabel.setBackground(new Color(202, 211, 217));
@@ -301,9 +303,11 @@ public class DlgMatricula extends JDialog implements ActionListener, MouseListen
 			model.addRow(new Object[] { 
 					ArregloMatricula.getMatricula(i).getNumMatricula(),
 					ArregloMatricula.getMatricula(i).getCodAlumno(),
+					ArregloAlumno.getAlumnoByCode(ArregloMatricula.getMatricula(i).getCodAlumno()).getNombres()+" "+ArregloAlumno.getAlumnoByCode(ArregloMatricula.getMatricula(i).getCodAlumno()).getApellidos(),
 					ArregloMatricula.getMatricula(i).getCodCurso(),
 					ArregloMatricula.getMatricula(i).getFechaMatricula(),
 					ArregloMatricula.getMatricula(i).getHoraMatricula(),
+					ArregloMatricula.getMatricula(i).getEstadoName(),
 					});
 		}
 	}

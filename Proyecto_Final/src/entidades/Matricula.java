@@ -32,6 +32,13 @@ public class Matricula {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
+	public String getEstadoName() {
+		if(estado == 0) {
+			return "ACTIVO";
+		}else {
+			return "DESACTIVADO";
+		}
+	}
 	public int getNumMatricula() {
 		return numMatricula;
 	}
@@ -78,9 +85,6 @@ public class Matricula {
 
 	public static void setCantMatricula(int cantMatricula) {
 		Matricula.cantMatricula = cantMatricula;
-	}
-
-	public Matricula() {
 	}
 
 	

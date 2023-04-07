@@ -187,6 +187,14 @@ public class MainMenu extends JFrame {
 		menuBar.add(mnConsulta);
 		
 		JMenuItem mntmNewMenuItem_2_2 = new JMenuItem("Alumnos y cursos");
+		mntmNewMenuItem_2_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DlgConsultaAlumnosyCursos dlgConsultaAlumnosyCursos = new DlgConsultaAlumnosyCursos(); 
+				dlgConsultaAlumnosyCursos.setModalityType(ModalityType.APPLICATION_MODAL);
+				dlgConsultaAlumnosyCursos.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dlgConsultaAlumnosyCursos.setVisible(true);
+			}
+		});
 		mntmNewMenuItem_2_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		mntmNewMenuItem_2_2.setHorizontalAlignment(SwingConstants.LEFT);
 		mntmNewMenuItem_2_2.setPreferredSize(new Dimension(200, 40));

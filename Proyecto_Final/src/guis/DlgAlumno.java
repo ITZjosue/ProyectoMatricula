@@ -140,12 +140,12 @@ public class DlgAlumno extends JDialog {
 		codAlumno.setColumns(10);
 
 		nomAlumno = new JTextField();
-		nomAlumno.setBounds(108, 54, 220, 20);
+		nomAlumno.setBounds(108, 16, 220, 20);
 		panel_1.add(nomAlumno);
 		nomAlumno.setColumns(10);
 
 		apeAlumno = new JTextField();
-		apeAlumno.setBounds(108, 16, 220, 20);
+		apeAlumno.setBounds(108, 54, 220, 20);
 		panel_1.add(apeAlumno);
 		apeAlumno.setColumns(10);
 

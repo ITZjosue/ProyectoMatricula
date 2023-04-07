@@ -3,9 +3,14 @@ package entidades;
 public class Curso {
 	private int codCurso, ciclo, creditos, horas;
 	private String asignatura;
+	private static int cantCurso;
+	static {
+		cantCurso = 0;
+	}
 	
-	public Curso(int codCurso,int ciclo,int creditos,int horas,String asignatura) {
-		this.codCurso = codCurso;
+	public Curso(int ciclo,int creditos,int horas,String asignatura) {
+		cantCurso++;
+		this.codCurso = 10000+cantCurso;
 		this.creditos = creditos;
 		this.ciclo = ciclo;
 		this.horas = horas;

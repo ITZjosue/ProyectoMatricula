@@ -1,22 +1,37 @@
 package entidades;
+
+import java.time.LocalDateTime;
+
 public class Matricula {
 	private int numMatricula,codAlumno ,codCurso;
-	private String fechaMatricula,horaMatricula;
-	
+	String fechaMatricula;
+	private String horaMatricula;
+	private int estado;
+	// ESTADOS: 
+	// 0 (ACTIVO), 
+	// 1 (DESACTIVADO)
 	private static int cantMatricula;
 	static {
 		cantMatricula= 0;
 	}
 	
-	public Matricula(int codAlumno, int codCurso,String numMtricula, String fechaMatricula, String horaMatricula) {
+	public Matricula(int codAlumno, int codCurso) {
 		cantMatricula ++;
-		this.numMatricula = 10000 + cantMatricula;
+		LocalDateTime today = java.time.LocalDateTime.now();
+		this.numMatricula = 100000 + cantMatricula;
+		this.estado = 0;
 		this.codAlumno = codAlumno;
 		this.codCurso = codCurso;
-		this.fechaMatricula = fechaMatricula;
-		this.horaMatricula = horaMatricula;
+		this.fechaMatricula = today.getDayOfMonth()+"/"+today.getMonthValue()+"/"+today.getYear();
+		this.horaMatricula = today.getHour()+":"+today.getMinute()+":"+today.getSecond();
 	}
 
+	public int getEstado() {
+		return estado;
+	}
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
 	public int getNumMatricula() {
 		return numMatricula;
 	}

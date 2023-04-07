@@ -4,12 +4,50 @@ import java.util.ArrayList;
 
 public class ArregloAlumno {
 	
-	private ArrayList<Alumno> arregloAlumnos;
-	
 	private static ArrayList<Alumno> listaAlumnos;
 	
 	static {
 		listaAlumnos = new ArrayList<>();
+		Alumno a = new Alumno("Dante Martin","Perez","7678872",15,990867622);
+		Alumno b = new Alumno("Mario Cesar","Casas","1234567",14,990867622);
+		Alumno c = new Alumno("Pedro Ramon","Suarez","9807654",12,990867622);
+		Alumno d = new Alumno("Daniel Alejandro","Pereda","1845987",20,990867622);
+		Alumno e = new Alumno("Michelle Melissa","Santos","3329487",19,990867622);
+		Alumno f = new Alumno("Jorge Luis","Cordova","2345678",16,990867622);
+		Alumno g = new Alumno("Fernanda Maria","Garcia","9087654",13,990867622);
+		Alumno h = new Alumno("Juan Pablo","Alvarez","6758493",18,990867622);
+		Alumno i = new Alumno("Isabella Maria","Gonzalez","5487109",17,990867622);
+		Alumno j = new Alumno("Santiago Jose","Castillo","8783901",15,990867622);
+		Alumno k = new Alumno("Camila Andrea","Martinez","8765432",14,990867622);
+		Alumno l = new Alumno("Luis Fernando","Ramirez","5690831",16,990867622);
+		Alumno m = new Alumno("Mariana Alejandra","Sanchez","1230987",18,990867622);
+		Alumno n = new Alumno("Daniel Eduardo","Alfaro","8765432",15,990867622);
+		Alumno o = new Alumno("Juliana Fernanda","Lopez","9087654",17,990867622);
+		Alumno p = new Alumno("Cristian David","Gomez","6758493",14,990867622);
+		Alumno q = new Alumno("Carolina Isabel","Cortes","5487109",16,990867622);
+		Alumno r = new Alumno("Roberto Carlos","Arango","8783901",18,990867622);
+		Alumno s = new Alumno("Vanessa Alejandra","Pardo","1230987",15,990867622);
+		Alumno t = new Alumno("Andres Felipe","Giraldo","8765432",17,990867622);
+		ArregloAlumno.setListaAlumnos(a);
+		ArregloAlumno.setListaAlumnos(b);
+		ArregloAlumno.setListaAlumnos(c);
+		ArregloAlumno.setListaAlumnos(d);
+		ArregloAlumno.setListaAlumnos(e);
+		ArregloAlumno.setListaAlumnos(f);
+		ArregloAlumno.setListaAlumnos(g);
+		ArregloAlumno.setListaAlumnos(h);
+		ArregloAlumno.setListaAlumnos(i);
+		ArregloAlumno.setListaAlumnos(j);		
+		ArregloAlumno.setListaAlumnos(k);
+		ArregloAlumno.setListaAlumnos(l);
+		ArregloAlumno.setListaAlumnos(m);
+		ArregloAlumno.setListaAlumnos(n);
+		ArregloAlumno.setListaAlumnos(o);
+		ArregloAlumno.setListaAlumnos(p);
+		ArregloAlumno.setListaAlumnos(q);
+		ArregloAlumno.setListaAlumnos(r);
+		ArregloAlumno.setListaAlumnos(s);
+		ArregloAlumno.setListaAlumnos(t);
 	}
 	
 	public static void setListaAlumnos(Alumno alumno) {
@@ -36,7 +74,6 @@ public class ArregloAlumno {
 	public static void deleteAlumnoByCode(int code) {
 		for(int i = 0; i < listaAlumnos.size();i++) {
 			if(ArregloAlumno.listaAlumnos.get(i).getCodAlumno() == code) {
-				if(ArregloAlumno.listaAlumnos.get(i).getCodAlumno() == code)
 					ArregloAlumno.listaAlumnos.remove(i);
 			}
 		}

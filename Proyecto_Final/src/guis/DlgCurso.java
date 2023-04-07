@@ -131,12 +131,12 @@ public class DlgCurso extends JDialog {
 		txtCodigo.setColumns(10);
 		
 		txtAsignatura = new JTextField();
-		txtAsignatura.setBounds(108, 75, 220, 20);
+		txtAsignatura.setBounds(108, 16, 220, 20);
 		panel_1.add(txtAsignatura);
 		txtAsignatura.setColumns(10);
 		
 		txtCiclo = new JTextField();
-		txtCiclo.setBounds(108, 16, 220, 20);
+		txtCiclo.setBounds(108, 75, 220, 20);
 		panel_1.add(txtCiclo);
 		txtCiclo.setColumns(10);
 		
@@ -191,21 +191,7 @@ public class DlgCurso extends JDialog {
 		btnAceptar.setBounds(199, 254, 100, 34);
 		contentPanel.add(btnAceptar);
 		
-		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				txtCodigo.setEditable(true);
-				modCurso.setCiclo(Integer.parseInt(txtCiclo.getText()));
-				modCurso.setAsignatura(txtAsignatura.getText());
-				modCurso.setCreditos(Integer.parseInt(txtCreditos.getText()));
-				modCurso.setHoras(Integer.parseInt(txtCantHoras.getText()));
-				listarCursos();
-				btnAceptar.setEnabled(false);
-				btnCancelar.setEnabled(false);
-				btnAdicionar.setEnabled(true);
-				btnEliminar.setEnabled(true);
-				limpiarFormulario();
-			}
-		});
+		
 		
 		JLabel lblAlumno = new JLabel("Curso");
 		lblAlumno.setVerticalAlignment(SwingConstants.TOP);
@@ -221,7 +207,6 @@ public class DlgCurso extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				if ( !txtCodigo.getText().isEmpty() && !txtCiclo.getText().isEmpty() && !txtCreditos.getText().isEmpty() && !txtCantHoras.getText().isEmpty() ) {
 					Curso curso = new Curso(
-							Integer.parseInt(txtCodigo.getText()),
 							Integer.parseInt(txtCiclo.getText()),
 							Integer.parseInt(txtCreditos.getText()),
 							Integer.parseInt(txtCantHoras.getText()),
@@ -254,6 +239,22 @@ public class DlgCurso extends JDialog {
 					txtCantHoras.setText(String.valueOf(modCurso.getHoras()));
 					txtAsignatura.setText(modCurso.getAsignatura());
 				}
+			}
+		});
+		
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtCodigo.setEditable(true);
+				modCurso.setCiclo(Integer.parseInt(txtCiclo.getText()));
+				modCurso.setAsignatura(txtAsignatura.getText());
+				modCurso.setCreditos(Integer.parseInt(txtCreditos.getText()));
+				modCurso.setHoras(Integer.parseInt(txtCantHoras.getText()));
+				listarCursos();
+				btnAceptar.setEnabled(false);
+				btnCancelar.setEnabled(false);
+				btnAdicionar.setEnabled(true);
+				btnEliminar.setEnabled(true);
+				limpiarFormulario();
 			}
 		});
 		

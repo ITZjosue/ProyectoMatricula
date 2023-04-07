@@ -281,43 +281,9 @@ public class MainMenu extends JFrame {
 		iconSystem.setBackground(new Color(0, 128, 255));
 		iconSystem.setOpaque(true);
 		iconSystem.setHorizontalAlignment(SwingConstants.CENTER);
-		iconSystem.setIcon(new ImageIcon("C:\\Users\\the_m\\git\\ProyectoMatricula\\Proyecto_Final\\img\\icons\\folder_system_15426 (1).png"));
+		iconSystem.setIcon(new ImageIcon("C:\\Users\\User\\git\\repository\\Proyecto_Final\\img\\icons\\folder_system_15426 (1).png"));
 		iconSystem.setBounds(0, 0, 102, 71);
 		contentPane.add(iconSystem);
-		if(ArregloAlumno.getListaAlumnosLen() < 1) {
-			addAlumnos();
-		}
-		if(ArregloCurso.getCantidadCursos() < 1) {
-			addCursos();
-		}
 	}
 	
-	void addAlumnos() {
-		Alumno a = new Alumno("Dante Martin","Perez","7678872",15,990867622);
-		Alumno b = new Alumno("Mario Cesar","Casas","1234567",14,990867622);
-		Alumno c = new Alumno("Pedro Ramon","Suarez","9807654",12,990867622);
-		Alumno d = new Alumno("Daniel Alejandro","Pereda","1845987",20,990867622,1);
-		Alumno e = new Alumno("Michelle Melissa","Santos","3329487",19,990867622,2);
-		ArregloAlumno.setListaAlumnos(a);
-		ArregloAlumno.setListaAlumnos(b);
-		ArregloAlumno.setListaAlumnos(c);
-		ArregloAlumno.setListaAlumnos(d);
-		ArregloAlumno.setListaAlumnos(e);	
-	}
-	void addCursos() {
-		Curso a = new Curso(12345,2,2,6,"Fisica II");
-		Curso b = new Curso(12545,2,3,3,"Ecuaciones Diferenciales");
-		Curso c = new Curso(16645,3,5,9,"Calculo I");
-		Curso d = new Curso(12785,1,2,4,"Quimica Organica");
-		Curso e = new Curso(19245,4,3,2,"Fisico-Quimica");
-		Curso f = new Curso(12335,2,4,3,"Bases de datos");
-		Curso g = new Curso(10975,1,5,4,"Geometria");
-		ArregloCurso.addCurso(a);
-		ArregloCurso.addCurso(b);
-		ArregloCurso.addCurso(c);
-		ArregloCurso.addCurso(d);
-		ArregloCurso.addCurso(e);
-		ArregloCurso.addCurso(f);
-		ArregloCurso.addCurso(g);	
-	}
 }

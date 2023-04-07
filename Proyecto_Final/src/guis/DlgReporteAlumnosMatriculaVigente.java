@@ -1,25 +1,25 @@
 package guis;
 
+import arreglos.*;
+import entidades.*;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
+import java.awt.Font;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ScrollPaneConstants;
 
-import arreglos.ArregloAlumno;
-import entidades.Alumno;
-
-public class DlgReporteAlumnosMatriculaVigente extends JDialog {
-
-	private final JPanel contentPanel = new JPanel();
-	private JTable table;
-	DefaultTableModel model = new DefaultTableModel();
+public class DlgReporteAlumnosMatriculaVigente extends JDialog implements ActionListener {
+	private JButton btnListar;
+	private JScrollPane scrollPane;
+	private JTextArea txtResultado;
 
 	/**
 	 * Launch the application.
@@ -38,46 +38,60 @@ public class DlgReporteAlumnosMatriculaVigente extends JDialog {
 	 * Create the dialog.
 	 */
 	public DlgReporteAlumnosMatriculaVigente() {
-		setTitle("Alumnos con matricula vigente");
-		setBounds(100, 100, 723, 523);
-		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		setTitle("ALUMNOS CON MATRiCULA VIGENTE");
+		setBounds(100, 100, 624, 592);
+		getContentPane().setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 47, 687, 426);
-		contentPanel.add(scrollPane);
+		btnListar = new JButton("Listar");
+		btnListar.addActionListener(this);
+		btnListar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnListar.setBounds(254, 10, 103, 28);
+		getContentPane().add(btnListar);
 		
-		table = new JTable(model) {
-			public boolean editCellAt(int row, int column, java.util.EventObject e) {
-				return false;
-			}
-		};
-		model.addColumn("Codigo");
-		model.addColumn("Nombres");
-		model.addColumn("Apellidos");
-		model.addColumn("DNI");
-		model.addColumn("Edad");
-		model.addColumn("Celular");
-		model.addColumn("Estado");
-		scrollPane.setViewportView(table);
-		listarAlumnosVigentes();
+		scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(10, 48, 590, 497);
+		getContentPane().add(scrollPane);
+		
+		txtResultado = new JTextArea();
+		txtResultado.setFont(new Font("Monospaced", Font.BOLD, 13));
+		scrollPane.setViewportView(txtResultado);
 	}
-
-	public void listarAlumnosVigentes() {
-		ArrayList<Alumno> vigentes = ArregloAlumno.getAlumnosVigentes();
-		for(int i = 0;i<vigentes.size();i++) {
-			Alumno a = vigentes.get(i);
-			model.addRow(new Object[] {
-					a.getCodAlumno(),
-					a.getNombres(),
-					a.getApellidos(),
-					a.getDni(),
-					a.getEdad(),
-					a.getCelular(),
-					a.getEstadoName()
-			});
+	
+	//DECLARACION GLOBAL
+	ArregloAlumno aa = new ArregloAlumno();
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnListar) {
+			actionPerformedBtnListar(e);
 		}
+	}
+	protected void actionPerformedBtnListar(ActionEvent e) {
+		txtResultado.setText("");
+		for (int i = 0; i < aa.tamanio(); i++) {
+			if (aa.obtener(i).getEstado() == 1) {
+				imprimir(" C�DIGO    : " + aa.obtener(i).getCodAlumno());
+				imprimir(" NOMBRES   : " + aa.obtener(i).getNombres());
+				imprimir(" APELLIDOS : " + aa.obtener(i).getApellidos());
+				imprimir(" DNI       : " + aa.obtener(i).getDni());
+				imprimir(" EDAD      : " + aa.obtener(i).getEdad());
+				imprimir(" CELULAR   : " + aa.obtener(i).getCelular());
+				imprimir(" ESTADO    : " + nombreEstado(aa.obtener(i).getEstado()));
+				imprimir("-------------------------------------------------------------------------");
+			}
+		}
+	}
+	
+	String nombreEstado(int i) {
+		switch (i) {
+		case 0: return "REGISTRADO";
+		case 1: return "MATRICULADO";
+		case 2: return "RETIRADO";
+		default: return null;
+		}
+	}
+	
+	void imprimir(String s) {
+		txtResultado.append(s + "\n");
 	}
 }

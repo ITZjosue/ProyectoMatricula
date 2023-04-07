@@ -1,5 +1,8 @@
 package arreglos;
 import entidades.Alumno;
+
+import java.io.*;
+
 import java.util.ArrayList;
 
 public class ArregloAlumno {
@@ -10,6 +13,32 @@ public class ArregloAlumno {
 	
 	static {
 		listaAlumnos = new ArrayList<>();
+	}
+	public void ActualizarArchivo() {
+		grabarAlumnos();
+	}
+	
+	private void grabarAlumnos() {
+		try {
+			PrintWriter pw;
+			String linea;
+			Alumno x;
+			pw = new PrintWriter(new FileWriter("alumnos.txt"));
+			for (int i = 0; i< arregloAlumnos.size(); i++) {
+				x = arregloAlumnos.get(i);
+				linea = x.getCodAlumno() + ";" +
+					    x.getNombres() + ";" +
+						x.getApellidos() + ";" +
+						x.getDni() + ";" +
+						x.getEdad() + ";" +
+						x.getCelular() + ";" +
+						x.getEstado();
+				pw.println(linea);
+			}
+			pw.close();
+		}
+		catch (Exception e) {
+		}
 	}
 	
 	public static void setListaAlumnos(Alumno alumno) {
@@ -60,4 +89,21 @@ public class ArregloAlumno {
 		}
 		return vigentes;
 	}
+
+	public Alumno buscar(int codAlumno) {
+		for (int i = 0; i < listaAlumnos.size(); i++) {
+			if (listaAlumnos.get(i).getCodAlumno() == codAlumno)
+				return listaAlumnos.get(i);
+		}
+		return null;
+	}
+
+	public int tamanio() {
+		return listaAlumnos.size();
+	}
+
+	public Alumno obtener(int i) {
+		return listaAlumnos.get(i);
+		}
+	
 }

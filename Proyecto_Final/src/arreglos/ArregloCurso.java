@@ -1,4 +1,5 @@
 package arreglos;
+import entidades.Alumno;
 import entidades.Curso;
 import java.util.ArrayList;
 
@@ -37,4 +38,22 @@ public class ArregloCurso {
 		}
 		return null;
 	}
+
+	public Curso buscar(int codCurso) {
+		for (int i = 0; i < listaCursos.size(); i++) {
+			if (listaCursos.get(i).getCodCurso() == codCurso)
+				return listaCursos.get(i);
+		}
+		return null;
+	}
+
+	public int tamanio() {
+		return listaCursos.size();
+	}
+
+
+	//public Alumno obtener(int i) {
+		//return listaCursos.get(i);
+	//}
+
 }

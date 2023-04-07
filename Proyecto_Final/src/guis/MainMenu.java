@@ -7,10 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import arreglos.ArregloAlumno;
-import arreglos.ArregloCurso;
-import entidades.Alumno;
-import entidades.Curso;
+import arreglos.*;
+import entidades.*;
+
 
 import java.awt.Color;
 import java.awt.Dialog.ModalityType;

@@ -1,72 +1,56 @@
 package entidades;
+
 public class Matricula {
-	private int numMatricula,codAlumno ,codCurso;
-	private String fechaMatricula,horaMatricula;
+
+		private int numMatricula, codAlumno, codCurso;
+		private String fecha, hora;
+		
+		public Matricula (int numMatricula, int codAlumno, int codCurso, String fecha, String hora){
+			this.numMatricula = numMatricula;
+			this.codAlumno = codAlumno;
+			this.codCurso = codCurso;
+			this.fecha = fecha;
+			this.hora = hora;
+		}
 	
-	private static int cantMatricula;
-	static {
-		cantMatricula= 0;
-	}
-	
-	public Matricula(int codAlumno, int codCurso,String numMtricula, String fechaMatricula, String horaMatricula) {
-		cantMatricula ++;
-		this.numMatricula = 10000 + cantMatricula;
-		this.codAlumno = codAlumno;
-		this.codCurso = codCurso;
-		this.fechaMatricula = fechaMatricula;
-		this.horaMatricula = horaMatricula;
-	}
+		public void setNumeroMatricula(int numMatricula) {
+			this.numMatricula = numMatricula;
+		}
 
-	public int getNumMatricula() {
-		return numMatricula;
-	}
+		public void setCodigoAlumno(int codAlumno) {
+			this.codAlumno = codAlumno;
+		}
 
-	public void setNumMatricula(int numMatricula) {
-		this.numMatricula = numMatricula;
-	}
+		public void setCodigoCurso(int codCurso) {
+			this.codCurso = codCurso;
+		}
 
-	public int getCodAlumno() {
-		return codAlumno;
-	}
+		public void setFecha(String fecha) {
+			this.fecha = fecha;
+		}
 
-	public void setCodAlumno(int codAlumno) {
-		this.codAlumno = codAlumno;
-	}
+		public void setHora(String hora) {
+			this.hora = hora;
+		}
+		
+		public int getNumeroMatricula() {
+			return numMatricula;
+		}
 
-	public int getCodCurso() {
-		return codCurso;
-	}
+		public int getCodigoAlumno() {
+			return codAlumno;
+		}
 
-	public void setCodCurso(int codCurso) {
-		this.codCurso = codCurso;
-	}
+		public int getCodigoCurso() {
+			return codCurso;
+		}
 
-	public String getFechaMatricula() {
-		return fechaMatricula;
-	}
+		public String getFecha() {
+			return fecha;
+		}
 
-	public void setFechaMatricula(String fecha) {
-		this.fechaMatricula = fecha;
-	}
-
-	public String getHoraMatricula() {
-		return horaMatricula;
-	}
-
-	public void setHoraMatricula(String hora) {
-		this.horaMatricula = hora;
-	}
-
-	public static int getCantMatricula() {
-		return cantMatricula;
-	}
-
-	public static void setCantMatricula(int cantMatricula) {
-		Matricula.cantMatricula = cantMatricula;
-	}
-
-	public Matricula() {
-	}
-
-	
+		public String getHora() {
+			return hora;
+		}
+		
 }

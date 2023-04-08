@@ -58,6 +58,8 @@ public class DlgMatricula extends JDialog implements ActionListener, MouseListen
 	private JComboBox <String> cboCursoDispo;
 	DefaultTableModel model = new DefaultTableModel();
 	private Matricula modMatricula;
+	private JTextField txtAlumno;
+	private JTextField txtCurso;
 
 	/**
 	 * Launch the application.
@@ -108,7 +110,7 @@ public class DlgMatricula extends JDialog implements ActionListener, MouseListen
 		
 		JLabel lblAlumnosSinMatricula = new JLabel("Alumno");
 		lblAlumnosSinMatricula.setFont(new Font("Arial", Font.BOLD, 12));
-		lblAlumnosSinMatricula.setBounds(10, 54, 147, 14);
+		lblAlumnosSinMatricula.setBounds(10, 26, 147, 14);
 		panel.add(lblAlumnosSinMatricula);
 		
 		JButton btnAceptar = new JButton("Aceptar");
@@ -175,19 +177,46 @@ public class DlgMatricula extends JDialog implements ActionListener, MouseListen
 		
 		JLabel lblCursosDisponibles = new JLabel("Curso");
 		lblCursosDisponibles.setFont(new Font("Arial", Font.BOLD, 12));
-		lblCursosDisponibles.setBounds(373, 54, 71, 14);
+		lblCursosDisponibles.setBounds(402, 26, 71, 14);
 		panel.add(lblCursosDisponibles);
 		
 		cboCursoDispo = new JComboBox <String> ();
-		cboCursoDispo.setBounds(500, 50, 227, 22);
+		cboCursoDispo.setBounds(495, 22, 227, 22);
 		panel.add(cboCursoDispo);
 		
 		cboAlumnoNoMatriculado = new JComboBox <String> ();
 		cboAlumnoNoMatriculado.addActionListener(this);
 		cboAlumnoNoMatriculado.addMouseListener(this);
-		cboAlumnoNoMatriculado.setBounds(104, 50, 211, 22);
+		cboAlumnoNoMatriculado.setBounds(97, 22, 211, 22);
 		panel.add(cboAlumnoNoMatriculado);
 		
+		txtAlumno = new JTextField();
+		txtAlumno.setEditable(false);
+		txtAlumno.setBounds(97, 69, 211, 20);
+		panel.add(txtAlumno);
+		txtAlumno.setColumns(10);
+		
+		txtCurso = new JTextField();
+		txtCurso.setEditable(false);
+		txtCurso.setColumns(10);
+		txtCurso.setBounds(495, 69, 227, 20);
+		panel.add(txtCurso);
+		
+		cboAlumnoNoMatriculado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(cboAlumnoNoMatriculado.getSelectedItem() != null) {
+					txtAlumno.setText(ArregloAlumno.getAlumnoByCode(Integer.parseInt(cboAlumnoNoMatriculado.getSelectedItem().toString())).getNombres()+" "+ArregloAlumno.getAlumnoByCode(Integer.parseInt(cboAlumnoNoMatriculado.getSelectedItem().toString())).getApellidos());					
+				}
+			}
+		});
+		
+		cboCursoDispo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(cboCursoDispo.getSelectedItem() != null) {
+					txtCurso.setText(ArregloCurso.getCursoByCode(Integer.parseInt(cboCursoDispo.getSelectedItem().toString())).getAsignatura());					
+				}
+			}
+		});
 		
 		btnMatricular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -276,6 +305,8 @@ public class DlgMatricula extends JDialog implements ActionListener, MouseListen
 		for (int i = 0; i <ArregloCurso.getCantidadCursos(); i++) {
 			cboCursoDispo.addItem(""+ArregloCurso.getCurso(i).getCodCurso());
 		}
+		txtAlumno.setText(ArregloAlumno.getAlumnoByCode(Integer.parseInt(cboAlumnoNoMatriculado.getSelectedItem().toString())).getNombres()+" "+ArregloAlumno.getAlumnoByCode(Integer.parseInt(cboAlumnoNoMatriculado.getSelectedItem().toString())).getApellidos());
+		txtCurso.setText(ArregloCurso.getCursoByCode(Integer.parseInt(cboCursoDispo.getSelectedItem().toString())).getAsignatura());
 		
 	}
 	public void generarMatricula() {

@@ -49,10 +49,10 @@ public class DlgAlumno extends JDialog {
 	private JTextField edadAlumno;
 	private JTextField celAlumno;
 	private JTable table;
-	private JComboBox comboBox;
 
 	DefaultTableModel model = new DefaultTableModel();
 	private Alumno modAlumno;
+	private JTextField txtEstado;
 
 	/**
 	 * Launch the application.
@@ -164,11 +164,11 @@ public class DlgAlumno extends JDialog {
 		panel_1.add(edadAlumno);
 		edadAlumno.setColumns(10);
 		
-		comboBox = new JComboBox();
-		comboBox.setBounds(545, 124, 114, 22);
-		panel_1.add(comboBox);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"REGISTRADO", "MATRICULADO", "RETIRADO"}));
-		comboBox.setEnabled(false);
+		txtEstado = new JTextField();
+		txtEstado.setEditable(false);
+		txtEstado.setBounds(545, 125, 86, 20);
+		panel_1.add(txtEstado);
+		txtEstado.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(new Color(192, 192, 192)));
@@ -348,7 +348,7 @@ public class DlgAlumno extends JDialog {
 					edadAlumno.setText(String.valueOf(modAlumno.getEdad()));
 					codAlumno.setText(String.valueOf(modAlumno.getCodAlumno()));
 					celAlumno.setText(String.valueOf(modAlumno.getCelular()));
-					comboBox.setSelectedIndex(modAlumno.getEstado());
+					txtEstado.setText(modAlumno.getEstadoName());
 				}
 			}
 		});
@@ -373,7 +373,7 @@ public class DlgAlumno extends JDialog {
 	
 	void limpiarFormulario() {
 		nomAlumno.setText("");
-		comboBox.setSelectedIndex(0);
+		txtEstado.setText("");
 		apeAlumno.setText("");
 		dniAlumno.setText("");
 		edadAlumno.setText("");

@@ -22,6 +22,8 @@ public class DlgConsultaAlumnosyCursos extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JComboBox cboCodAlumno;
 	private JTextArea txtAlumno;
+	private JLabel lblNewLabel_1;
+	private JComboBox cboCodCurso;
 	/**
 	 * Launch the application.
 	 */
@@ -58,12 +60,27 @@ public class DlgConsultaAlumnosyCursos extends JDialog {
 		contentPanel.add(scrollPane);
 		
 		txtAlumno = new JTextArea();
+		txtAlumno.setEditable(false);
 		txtAlumno.setFont(new Font("Consolas", Font.PLAIN, 13));
 		scrollPane.setViewportView(txtAlumno);
+		
+		lblNewLabel_1 = new JLabel("Codgio de Curso");
+		lblNewLabel_1.setBounds(447, 36, 110, 14);
+		contentPanel.add(lblNewLabel_1);
+		
+		cboCodCurso = new JComboBox();
+		cboCodCurso.setBounds(593, 32, 190, 22);
+		contentPanel.add(cboCodCurso);
 		cboCodAlumno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int codAlumno = Integer.parseInt(cboCodAlumno.getSelectedItem().toString());
-				listar(codAlumno);
+				listarAlumno(codAlumno);
+			}
+		});
+		cboCodCurso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int codCurso = Integer.parseInt(cboCodCurso.getSelectedItem().toString());
+				listarCurso(codCurso);
 			}
 		});
 		insertData();
@@ -71,15 +88,17 @@ public class DlgConsultaAlumnosyCursos extends JDialog {
 	
 	void insertData() {
 		cboCodAlumno.removeAllItems();
+		cboCodCurso.removeAllItems();
 		for (int i = 0; i <ArregloAlumno.getListaAlumnosLen(); i++) {
-			if(ArregloAlumno.getAlumno(i).getEstado()==0) {
 				cboCodAlumno.addItem(""+ArregloAlumno.getAlumno(i).getCodAlumno());
 			};
+		for(int i = 0;i < ArregloCurso.getCantidadCursos();i++) {
+			cboCodCurso.addItem(""+ArregloCurso.getCurso(i).getCodCurso());
 		}
 		
 	}
 	
-	void listar(int codAlumno) {
+	void listarAlumno(int codAlumno) {
 		txtAlumno.setText("");
 		Alumno alumno = ArregloAlumno.getAlumnoByCode(codAlumno);
 		txtAlumno.setText("\n	INFORMACION DEL ALUMNO");
@@ -94,11 +113,20 @@ public class DlgConsultaAlumnosyCursos extends JDialog {
 			txtAlumno.append("\n\n	INFORMACION CURSO MATRICULADO");
 			Matricula matricula = ArregloMatricula.getMatriculaByAlumnoCode(alumno.getCodAlumno());
 			Curso curso = ArregloCurso.getCursoByCode(matricula.getCodCurso());
-			txtAlumno.append("\n 	Curso: "+curso.getAsignatura());
-			txtAlumno.append("\n    Codigo: "+curso.getCodCurso());
-			txtAlumno.append("\n    Creditos: "+curso.getCreditos());
-			txtAlumno.append("\n    Horas:"+curso.getHoras());
+			txtAlumno.append("\n	Curso: "+curso.getAsignatura());
+			txtAlumno.append("\n	Codigo: "+curso.getCodCurso());
+			txtAlumno.append("\n	Creditos: "+curso.getCreditos());
+			txtAlumno.append("\n	Horas:"+curso.getHoras());
 		}
+	}
+	
+	void listarCurso(int codCurso) {
+		Curso curso = ArregloCurso.getCursoByCode(codCurso);
+		txtAlumno.setText("\n	INFORMACION CURSO");
+		txtAlumno.append("\n	Curso: "+curso.getAsignatura());
+		txtAlumno.append("\n	Codigo: "+curso.getCodCurso());
+		txtAlumno.append("\n	Creditos: "+curso.getCreditos());
+		txtAlumno.append("\n	Horas:"+curso.getHoras());
 	}
 	
 }

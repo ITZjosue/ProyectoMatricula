@@ -1,5 +1,6 @@
 package guis;
 
+import java.io.*;
 import arreglos.ArregloAlumno;
 import java.awt.BorderLayout;
 
@@ -229,6 +230,7 @@ public class DlgAlumno extends JDialog {
 					if( table.getValueAt(row,4).toString() == "REGISTRADO" && opt == 0) {
 						ArregloAlumno.deleteAlumnoByCode(Integer.parseInt(table.getValueAt(row,0).toString()));
 						listarAlumnos();
+						ArregloAlumno.grabarAlumno();
 					}else if(table.getValueAt(row,4) == "MATRICULADO"){
 						mensaje("El alumno no puede ser eliminado porque está matriculado");
 					}
@@ -268,7 +270,8 @@ public class DlgAlumno extends JDialog {
 					btnCancelar.setEnabled(false);
 					btnAdicionar.setEnabled(true);
 					btnEliminar.setEnabled(true);
-					limpiarFormulario();									
+					limpiarFormulario();
+					ArregloAlumno.grabarAlumno();
 				}else {
 					mensaje("Hay campos vacíos");
 				}
@@ -322,6 +325,7 @@ public class DlgAlumno extends JDialog {
 							Integer.parseInt(celAlumno.getText())
 							);
 					ArregloAlumno.setListaAlumnos(nuevoAlumno);
+					ArregloAlumno.grabarAlumno();
 					listarAlumnos();
 					limpiarFormulario();
 				}else {
@@ -388,4 +392,6 @@ public class DlgAlumno extends JDialog {
 	int confirmDlg(String s) {
 		return JOptionPane.showConfirmDialog(this, s);
 	}
+	
+	
 }

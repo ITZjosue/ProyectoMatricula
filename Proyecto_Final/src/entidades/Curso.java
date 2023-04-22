@@ -17,6 +17,15 @@ public class Curso {
 		this.asignatura = asignatura;
 	}
 	
+	public Curso(int codCurso,int ciclo,int creditos,int horas,String asignatura) {
+		cantCurso++;
+		this.codCurso = codCurso;
+		this.creditos = creditos;
+		this.ciclo = ciclo;
+		this.horas = horas;
+		this.asignatura = asignatura;
+	}
+	
 	public int getCodCurso() {
 		return codCurso;
 	}

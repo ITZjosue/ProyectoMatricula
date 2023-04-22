@@ -1,5 +1,6 @@
 package arreglos;
 import entidades.Alumno;
+import java.io.*;
 import java.util.ArrayList;
 
 public class ArregloAlumno {
@@ -8,7 +9,8 @@ public class ArregloAlumno {
 	
 	static {
 		listaAlumnos = new ArrayList<>();
-		Alumno a = new Alumno("Dante Martin","Perez","7678872",15,990867622);
+		cargarAlumno();
+		/*Alumno a = new Alumno("Dante Martin","Perez","7678872",15,990867622);
 		Alumno b = new Alumno("Mario Cesar","Casas","1234567",14,990867622);
 		Alumno c = new Alumno("Pedro Ramon","Suarez","9807654",12,990867622);
 		Alumno d = new Alumno("Daniel Alejandro","Pereda","1845987",20,990867622);
@@ -47,7 +49,7 @@ public class ArregloAlumno {
 		ArregloAlumno.setListaAlumnos(q);
 		ArregloAlumno.setListaAlumnos(r);
 		ArregloAlumno.setListaAlumnos(s);
-		ArregloAlumno.setListaAlumnos(t);
+		ArregloAlumno.setListaAlumnos(t);*/
 	}
 	
 	public static void setListaAlumnos(Alumno alumno) {
@@ -96,5 +98,53 @@ public class ArregloAlumno {
 			}
 		}
 		return vigentes;
+	}
+	
+	public static void grabarAlumno() {
+		try {
+			PrintWriter pw;
+			Alumno x;
+			String linea;
+			pw = new PrintWriter(new FileWriter("alumnos.txt"));
+			for(int i = 0;i<ArregloAlumno.getListaAlumnosLen();i++) {
+				x = ArregloAlumno.getAlumno(i);
+				linea = x.getCodAlumno()+";"+
+						x.getNombres()+";"+
+						x.getApellidos()+";"+
+						x.getDni()+";"+
+						x.getCelular()+";"+
+						x.getEstado()+";"+
+						x.getEdad();
+				pw.println(linea);
+			}
+			pw.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public static void cargarAlumno() {
+		try {
+			BufferedReader br;
+			String linea, nombres,apellidos,dni;
+			int codAlumno, edad,celular,estado;
+			String s[];
+			
+			br = new BufferedReader(new FileReader("alumnos.txt"));
+			while((linea = br.readLine()) != null) {
+				s = linea.split(";");
+				codAlumno = Integer.parseInt(s[0]);
+				nombres = s[1];
+				apellidos = s[2];
+				dni = s[3];
+				celular = Integer.parseInt(s[4]);
+				estado = Integer.parseInt(s[5]);
+				edad = Integer.parseInt(s[6]);
+				ArregloAlumno.setListaAlumnos(new Alumno(codAlumno,nombres,apellidos,dni,edad,celular,estado));
+			}
+			br.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 	}
 }

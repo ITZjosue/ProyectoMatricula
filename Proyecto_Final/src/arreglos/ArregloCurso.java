@@ -1,5 +1,8 @@
 package arreglos;
+import entidades.Alumno;
 import entidades.Curso;
+
+import java.io.*;
 import java.util.ArrayList;
 
 public class ArregloCurso {
@@ -7,6 +10,7 @@ public class ArregloCurso {
 	
 	static {
 		listaCursos = new ArrayList<>();
+		//cargarCurso();
 		Curso a = new Curso(2,2,6,"Fisica II");
 		Curso b = new Curso(2,3,3,"Ecuaciones Diferenciales");
 		Curso c = new Curso(3,5,9,"Calculo I");
@@ -70,5 +74,49 @@ public class ArregloCurso {
 			}
 		}
 		return null;
+	}
+	
+	public static void grabarCurso() {
+		try {
+			PrintWriter pw;
+			Curso x;
+			String linea;
+			pw = new PrintWriter(new FileWriter("curso.txt"));
+			for(int i = 0;i<ArregloAlumno.getListaAlumnosLen();i++) {
+				x = ArregloCurso.getCurso(i);
+				linea = x.getCodCurso()+";"+
+						x.getAsignatura()+";"+
+						x.getCiclo()+";"+
+						x.getCreditos()+";"+
+						x.getHoras();
+				pw.println(linea);
+			}
+			pw.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public static void cargarCurso() {
+		try {
+			BufferedReader br;
+			String linea, asignatura;;
+			int codCurso, ciclo, creditos, horas;
+			String s[];
+			
+			br = new BufferedReader(new FileReader("curso.txt"));
+			while((linea = br.readLine()) != null) {
+				s = linea.split(";");
+				codCurso = Integer.parseInt(s[0]);
+				asignatura = s[1];
+				ciclo = Integer.parseInt(s[2]);
+				creditos = Integer.parseInt(s[3]);
+				horas = Integer.parseInt(s[4]);
+				ArregloCurso.addCurso(new Curso(codCurso,ciclo,creditos,horas,asignatura));
+			}
+			br.close();
+		}catch(Exception e) {
+			System.out.println("acac");
+		}
 	}
 }

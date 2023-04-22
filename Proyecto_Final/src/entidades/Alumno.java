@@ -19,7 +19,7 @@ public class Alumno {
 		this.codAlumno = 202010000+cantAlumnos;
 	}
 	
-	public Alumno(String nombres, String apellidos,String dni, int edad, int celular,int estado) {
+	public Alumno(int codAlumno,String nombres, String apellidos,String dni, int edad, int celular,int estado) {
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.dni = dni;
@@ -27,7 +27,7 @@ public class Alumno {
 		this.estado = estado;
 		this.celular = celular;
 		cantAlumnos++;
-		this.codAlumno = 202010000+cantAlumnos;
+		this.codAlumno = codAlumno;
 	}
 	public Alumno(String nombres, String apellidos,String dni, int edad, int celular,int estado,int codCurso) {
 		this.nombres = nombres;

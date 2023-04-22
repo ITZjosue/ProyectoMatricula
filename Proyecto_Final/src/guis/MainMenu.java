@@ -204,6 +204,14 @@ public class MainMenu extends JFrame {
 		mnConsulta.add(mntmNewMenuItem_2_2);
 		
 		JMenuItem mntmNewMenuItem_2_3 = new JMenuItem("Matriculas y Retiros");
+		mntmNewMenuItem_2_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DlgConsultaMatriculas dlgConsultaMatriculas = new DlgConsultaMatriculas();
+				dlgConsultaMatriculas.setModalityType(ModalityType.APPLICATION_MODAL);
+				dlgConsultaMatriculas.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dlgConsultaMatriculas.setVisible(true);
+			}
+		});
 		mntmNewMenuItem_2_3.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		mntmNewMenuItem_2_3.setHorizontalAlignment(SwingConstants.LEFT);
 		mntmNewMenuItem_2_3.setPreferredSize(new Dimension(200, 40));
@@ -266,6 +274,14 @@ public class MainMenu extends JFrame {
 		mntmNewMenuItem_2_6.setBackground(new Color(0, 128, 255));
 		mntmNewMenuItem_2_6.setBorder(null);
 		mnReporte.add(mntmNewMenuItem_2_6);
+		 mntmNewMenuItem_2_6.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent e) {
+				 DlgReporteMartriculadosPorCurso dlgReporteMatriculadosPorCurso = new DlgReporteMartriculadosPorCurso();
+				 dlgReporteMatriculadosPorCurso.setModalityType(ModalityType.APPLICATION_MODAL);
+				 dlgReporteMatriculadosPorCurso.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				 dlgReporteMatriculadosPorCurso.setVisible(true);
+			 }
+		 });
 
 		
 		JTextPane txtpnSistemaDeMatrculas = new JTextPane();

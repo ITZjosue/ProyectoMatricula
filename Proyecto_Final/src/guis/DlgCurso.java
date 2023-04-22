@@ -126,6 +126,7 @@ public class DlgCurso extends JDialog {
 		panel_1.add(lblNewJgoodiesLabel_4);
 		
 		txtCodigo = new JTextField();
+		txtCodigo.setEditable(false);
 		txtCodigo.setBounds(576, 16, 86, 20);
 		panel_1.add(txtCodigo);
 		txtCodigo.setColumns(10);
@@ -163,6 +164,7 @@ public class DlgCurso extends JDialog {
 				}else {
 					if(opt == 0) {
 						ArregloCurso.deleteCursoByCode(Integer.parseInt(table.getValueAt(row, 0).toString()));
+						ArregloCurso.grabarCurso();
 						listarCursos();										
 					}					
 				}
@@ -205,7 +207,7 @@ public class DlgCurso extends JDialog {
 		
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if ( !txtCodigo.getText().isEmpty() && !txtCiclo.getText().isEmpty() && !txtCreditos.getText().isEmpty() && !txtCantHoras.getText().isEmpty() ) {
+				if ( !txtCiclo.getText().isEmpty() && !txtCreditos.getText().isEmpty() && !txtCantHoras.getText().isEmpty() ) {
 					Curso curso = new Curso(
 							Integer.parseInt(txtCiclo.getText()),
 							Integer.parseInt(txtCreditos.getText()),
@@ -213,6 +215,7 @@ public class DlgCurso extends JDialog {
 							txtAsignatura.getText()
 							);
 					ArregloCurso.addCurso(curso);
+					ArregloCurso.grabarCurso();
 					listarCursos();
 					limpiarFormulario();
 				}else {
@@ -249,6 +252,7 @@ public class DlgCurso extends JDialog {
 				modCurso.setAsignatura(txtAsignatura.getText());
 				modCurso.setCreditos(Integer.parseInt(txtCreditos.getText()));
 				modCurso.setHoras(Integer.parseInt(txtCantHoras.getText()));
+				ArregloCurso.grabarCurso();
 				listarCursos();
 				btnAceptar.setEnabled(false);
 				btnCancelar.setEnabled(false);

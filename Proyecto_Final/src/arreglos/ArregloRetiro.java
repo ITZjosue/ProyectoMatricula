@@ -19,6 +19,16 @@ public class ArregloRetiro {
 	public static Retiro getRetiro(int index) {
 		return arregloRetiro.get(index);
 	}
+	
+	public static Retiro getRetiroByCode(int code) {
+		for(int i = 0;i<arregloRetiro.size();i++) {
+			if(arregloRetiro.get(i).getNumRetiro() == code) {
+				return arregloRetiro.get(i);
+			}
+		}
+		return null;
+	}
+	
 	public static void deleteRetiroByCode(int code) {
 		for(int i = 0; i < arregloRetiro.size();i++) {
 			if(arregloRetiro.get(i).getNumRetiro() == code) {
